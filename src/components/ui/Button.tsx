@@ -30,7 +30,7 @@ export default function Button({
   ...props
 }: ButtonProps) {
   const baseStyles =
-    "inline-flex items-center justify-center font-semibold rounded-xl transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F2A65A] active:scale-[0.98]";
+    "inline-flex items-center justify-center font-semibold rounded-xl transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] active:scale-[0.98]";
 
   const sizes = {
     sm: "px-3.5 py-2 text-xs gap-1.5 min-h-[38px]",
@@ -40,13 +40,13 @@ export default function Button({
 
   const variants = {
     primary:
-      "bg-[#F2A65A] text-[#0B0E14] shadow-[0_4px_16px_rgba(242,166,90,0.2)] hover:bg-[#f3af6b] hover:shadow-[0_6px_24px_rgba(242,166,90,0.35)] hover:-translate-y-0.5",
+      "bg-[var(--accent)] text-[var(--accent-text-on)] shadow-[0_4px_16px_var(--accent-glow)] hover:bg-[var(--accent-hover)] hover:-translate-y-0.5",
     secondary:
-      "bg-[rgba(245,243,238,0.08)] text-[#F5F3EE] border border-[rgba(245,243,238,0.14)] hover:bg-[rgba(245,243,238,0.14)] hover:border-[rgba(245,243,238,0.25)] hover:-translate-y-0.5",
+      "bg-[var(--btn-secondary-bg)] text-[var(--btn-secondary-text)] border border-[var(--btn-secondary-border)] hover:bg-[var(--btn-secondary-hover-bg)] hover:-translate-y-0.5",
     outline:
-      "bg-transparent text-[#F5F3EE] border border-[rgba(245,243,238,0.25)] hover:border-[#F2A65A] hover:text-[#F2A65A] hover:bg-[rgba(242,166,90,0.05)] hover:-translate-y-0.5",
+      "bg-transparent text-[var(--text-primary)] border border-[var(--surface-border)] hover:border-[var(--accent)] hover:text-[var(--accent)] hover:bg-[var(--accent-glow)] hover:-translate-y-0.5",
     ghost:
-      "bg-transparent text-[rgba(245,243,238,0.7)] hover:text-[#F5F3EE] hover:bg-[rgba(245,243,238,0.06)]",
+      "bg-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--btn-secondary-bg)]",
   };
 
   const combinedClass = cn(baseStyles, sizes[size], variants[variant], className);

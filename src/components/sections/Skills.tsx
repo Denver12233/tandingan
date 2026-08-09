@@ -7,10 +7,10 @@ import SectionHeading from "../ui/SectionHeading";
 
 export default function Skills() {
   const getCategoryIcon = (name: string) => {
-    if (name.includes("Frameworks")) return <Layers className="text-[#F2A65A]" size={22} />;
-    if (name.includes("Languages")) return <Code className="text-[#F2A65A]" size={22} />;
-    if (name.includes("Database")) return <Database className="text-[#F2A65A]" size={22} />;
-    return <Wrench className="text-[#F2A65A]" size={22} />;
+    if (name.includes("Frameworks")) return <Layers className="text-[var(--accent)]" size={22} />;
+    if (name.includes("Languages")) return <Code className="text-[var(--accent)]" size={22} />;
+    if (name.includes("Database")) return <Database className="text-[var(--accent)]" size={22} />;
+    return <Wrench className="text-[var(--accent)]" size={22} />;
   };
 
   return (
@@ -24,12 +24,12 @@ export default function Skills() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
         {cvData.technicalSkills.map((category, idx) => (
           <AnimatedReveal key={category.name} direction="up" delay={0.1 + idx * 0.1}>
-            <div className="h-full rounded-2xl border border-[rgba(245,243,238,0.1)] bg-[rgba(18,22,31,0.6)] p-6 sm:p-7 backdrop-blur-md transition-all duration-300 hover:border-[rgba(242,166,90,0.3)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.3)]">
-              <div className="flex items-center gap-3 mb-5 border-b border-[rgba(245,243,238,0.08)] pb-4">
-                <div className="h-10 w-10 rounded-xl bg-[rgba(242,166,90,0.12)] border border-[rgba(242,166,90,0.25)] flex items-center justify-center shrink-0">
+            <div className="h-full rounded-2xl border border-[var(--surface-border)] bg-[var(--card-bg)] p-6 sm:p-7 backdrop-blur-md transition-all duration-300 hover:border-[var(--surface-hover-border)] hover:shadow-lg">
+              <div className="flex items-center gap-3 mb-5 border-b border-[var(--surface-border)] pb-4">
+                <div className="h-10 w-10 rounded-xl bg-[var(--badge-accent-bg)] border border-[var(--badge-accent-border)] flex items-center justify-center shrink-0">
                   {getCategoryIcon(category.name)}
                 </div>
-                <h3 className="font-[var(--font-space-grotesk)] text-lg font-bold text-[#F5F3EE]">
+                <h3 className="font-[var(--font-space-grotesk)] text-lg font-bold text-[var(--text-primary)]">
                   {category.name}
                 </h3>
               </div>
@@ -38,9 +38,9 @@ export default function Skills() {
                 {category.skills.map((skill) => (
                   <div
                     key={skill}
-                    className="inline-flex items-center gap-2 rounded-xl bg-[rgba(245,243,238,0.05)] border border-[rgba(245,243,238,0.12)] px-3.5 py-2 text-xs sm:text-sm font-medium text-[#F5F3EE] transition-all duration-200 hover:bg-[rgba(242,166,90,0.12)] hover:border-[rgba(242,166,90,0.3)] hover:text-[#F2A65A]"
+                    className="inline-flex items-center gap-2 rounded-xl bg-[var(--badge-surface-bg)] border border-[var(--badge-surface-border)] px-3.5 py-2 text-xs sm:text-sm font-medium text-[var(--badge-surface-text)] transition-all duration-200 hover:bg-[var(--badge-accent-bg)] hover:border-[var(--badge-accent-border)] hover:text-[var(--badge-accent-text)]"
                   >
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#F2A65A]" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)]" />
                     <span>{skill}</span>
                   </div>
                 ))}

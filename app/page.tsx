@@ -2,7 +2,7 @@ import PortfolioView from "@/src/components/PortfolioView";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#0B0E14] text-[#F5F3EE] selection:bg-[#F2A65A] selection:text-[#0B0E14]">
+    <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)] selection:bg-[var(--accent)] selection:text-[var(--accent-text-on)] transition-colors duration-300">
       <PortfolioView />
     </main>
   );

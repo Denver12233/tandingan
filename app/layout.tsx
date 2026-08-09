@@ -3,6 +3,7 @@ import { Caveat, Geist, Geist_Mono, Space_Grotesk } from "next/font/google";
 import { ReactNode } from "react";
 import "./globals.css";
 import Navbar from "@/src/components/layout/Navbar";
+import { ThemeProvider } from "@/src/components/theme/ThemeProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -48,11 +49,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} ${caveat.variable} h-full antialiased dark`}
+      className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} ${caveat.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-[#0B0E14] text-[#F5F3EE]">
-        <Navbar />
-        {children}
+      <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)]">
+        <ThemeProvider>
+          <Navbar />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

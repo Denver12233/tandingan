@@ -5,18 +5,108 @@
   --foreground: #f5f3ee;
   --surface: #12161f;
   --surface-border: rgba(245, 243, 238, 0.1);
-  --accent-amber: #f2a65a;
-  --accent-amber-glow: rgba(242, 166, 90, 0.15);
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-display: var(--font-space-grotesk);
+  --surface-hover-border: rgba(242, 166, 90, 0.3);
+
+  --accent: #f2a65a;
+  --accent-hover: #f3af6b;
+  --accent-glow: rgba(242, 166, 90, 0.15);
+  --accent-border: rgba(242, 166, 90, 0.3);
+  --accent-text-on: #0b0e14;
+
+  --text-primary: #f5f3ee;
+  --text-secondary: rgba(245, 243, 238, 0.7);
+  --text-muted: rgba(245, 243, 238, 0.55);
+
+  --badge-accent-bg: rgba(242, 166, 90, 0.12);
+  --badge-accent-border: rgba(242, 166, 90, 0.3);
+  --badge-accent-text: #f2a65a;
+
+  --badge-surface-bg: rgba(245, 243, 238, 0.06);
+  --badge-surface-border: rgba(245, 243, 238, 0.12);
+  --badge-surface-text: #f5f3ee;
+
+  --btn-secondary-bg: rgba(245, 243, 238, 0.08);
+  --btn-secondary-border: rgba(245, 243, 238, 0.14);
+  --btn-secondary-hover-bg: rgba(245, 243, 238, 0.14);
+  --btn-secondary-text: #f5f3ee;
+
+  --card-bg: rgba(18, 22, 31, 0.6);
+  --card-subtle-bg: rgba(18, 22, 31, 0.4);
+  --nav-bg-scrolled: rgba(11, 14, 20, 0.94);
+  --nav-bg-unscrolled: rgba(18, 22, 31, 0.85);
+  --nav-border-scrolled: rgba(245, 243, 238, 0.15);
+  --nav-border-unscrolled: rgba(245, 243, 238, 0.1);
+  --nav-menu-bg: rgba(11, 14, 20, 0.96);
+
+  --grid-line: rgba(245, 243, 238, 0.03);
+  --grid-glow: rgba(242, 166, 90, 0.06);
+  --skeleton-bg: #12161f;
+  --skeleton-border: rgba(245, 243, 238, 0.06);
+  --skeleton-shimmer: rgba(245, 243, 238, 0.08);
+
+  --scrollbar-track: #0b0e14;
+  --scrollbar-thumb: rgba(245, 243, 238, 0.15);
+}
+
+[data-theme="light"] {
+  --background: #faf7f2;
+  --foreground: #1a1a18;
+  --surface: #ffffff;
+  --surface-border: rgba(26, 26, 24, 0.12);
+  --surface-hover-border: rgba(201, 122, 46, 0.45);
+
+  --accent: #c97a2e;
+  --accent-hover: #b36822;
+  --accent-glow: rgba(201, 122, 46, 0.15);
+  --accent-border: rgba(201, 122, 46, 0.4);
+  --accent-text-on: #ffffff;
+
+  --text-primary: #1a1a18;
+  --text-secondary: #4a4a45;
+  --text-muted: #73726b;
+
+  --badge-accent-bg: #fdf1e2;
+  --badge-accent-border: #f0d3a8;
+  --badge-accent-text: #8a5a18;
+
+  --badge-surface-bg: rgba(26, 26, 24, 0.05);
+  --badge-surface-border: rgba(26, 26, 24, 0.14);
+  --badge-surface-text: #1a1a18;
+
+  --btn-secondary-bg: rgba(26, 26, 24, 0.06);
+  --btn-secondary-border: rgba(26, 26, 24, 0.15);
+  --btn-secondary-hover-bg: rgba(26, 26, 24, 0.1);
+  --btn-secondary-text: #1a1a18;
+
+  --card-bg: #ffffff;
+  --card-subtle-bg: rgba(255, 255, 255, 0.85);
+  --nav-bg-scrolled: rgba(250, 247, 242, 0.95);
+  --nav-bg-unscrolled: rgba(255, 255, 255, 0.9);
+  --nav-border-scrolled: rgba(26, 26, 24, 0.15);
+  --nav-border-unscrolled: rgba(26, 26, 24, 0.12);
+  --nav-menu-bg: #ffffff;
+
+  --grid-line: rgba(26, 26, 24, 0.04);
+  --grid-glow: rgba(201, 122, 46, 0.1);
+  --skeleton-bg: #eae6de;
+  --skeleton-border: rgba(26, 26, 24, 0.08);
+  --skeleton-shimmer: rgba(255, 255, 255, 0.75);
+
+  --scrollbar-track: #faf7f2;
+  --scrollbar-thumb: rgba(26, 26, 24, 0.2);
 }
 
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-border: var(--surface-border);
+  --color-accent: var(--accent);
+  --color-accent-glow: var(--accent-glow);
+  --color-accent-text-on: var(--accent-text-on);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-display: var(--font-space-grotesk);
@@ -32,24 +122,25 @@ body {
   color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Custom subtle scrollbar */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0b0e14;
+  background: var(--scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(245, 243, 238, 0.15);
+  background: var(--scrollbar-thumb);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(242, 166, 90, 0.4);
+  background: var(--accent);
 }
 
 /* Skeleton Shimmer Sweep Animation */

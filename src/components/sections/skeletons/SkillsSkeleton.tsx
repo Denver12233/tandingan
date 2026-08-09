@@ -10,10 +10,10 @@ export default function SkillsSkeleton() {
         {Array.from({ length: 4 }).map((_, idx) => (
           <div
             key={idx}
-            className="h-full rounded-2xl border border-[rgba(245,243,238,0.1)] bg-[rgba(18,22,31,0.6)] p-6 sm:p-7 backdrop-blur-md"
+            className="h-full rounded-2xl border border-[var(--surface-border)] bg-[var(--card-bg)] p-6 sm:p-7 backdrop-blur-md"
           >
             {/* Header Icon + Category Title */}
-            <div className="flex items-center gap-3 mb-5 border-b border-[rgba(245,243,238,0.08)] pb-4">
+            <div className="flex items-center gap-3 mb-5 border-b border-[var(--surface-border)] pb-4">
               <Skeleton className="h-10 w-10" rounded="rounded-xl" />
               <Skeleton className="h-6 w-44" rounded="rounded-lg" />
             </div>

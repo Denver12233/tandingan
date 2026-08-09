@@ -18,38 +18,38 @@ export default function EducationSection() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Main Degree Card */}
         <AnimatedReveal direction="up" delay={0.1} className="lg:col-span-7">
-          <div className="h-full rounded-2xl border border-[rgba(245,243,238,0.1)] bg-[rgba(18,22,31,0.6)] p-6 sm:p-8 backdrop-blur-md flex flex-col justify-between">
+          <div className="h-full rounded-2xl border border-[var(--surface-border)] bg-[var(--card-bg)] p-6 sm:p-8 backdrop-blur-md flex flex-col justify-between transition-colors duration-300">
             <div>
-              <div className="inline-flex items-center gap-2 rounded-full bg-[rgba(242,166,90,0.1)] border border-[rgba(242,166,90,0.25)] px-3 py-1 text-xs font-semibold text-[#F2A65A] mb-4">
+              <div className="inline-flex items-center gap-2 rounded-full bg-[var(--badge-accent-bg)] border border-[var(--badge-accent-border)] px-3 py-1 text-xs font-semibold text-[var(--badge-accent-text)] mb-4">
                 <GraduationCap size={15} />
                 <span>Bachelor&apos;s Degree</span>
               </div>
 
-              <h3 className="font-[var(--font-space-grotesk)] text-2xl sm:text-3xl font-bold text-[#F5F3EE] mb-2">
+              <h3 className="font-[var(--font-space-grotesk)] text-2xl sm:text-3xl font-bold text-[var(--text-primary)] mb-2">
                 {cvData.education.degree}
               </h3>
 
-              <div className="text-lg font-semibold text-[rgba(245,243,238,0.85)] mb-4">
+              <div className="text-lg font-semibold text-[var(--text-secondary)] mb-4">
                 {cvData.education.institution}
               </div>
 
-              <div className="flex flex-wrap items-center gap-4 text-xs sm:text-sm text-[rgba(245,243,238,0.6)] mb-6">
+              <div className="flex flex-wrap items-center gap-4 text-xs sm:text-sm text-[var(--text-muted)] mb-6">
                 <div className="flex items-center gap-1.5">
-                  <Calendar size={15} className="text-[#F2A65A]" />
+                  <Calendar size={15} className="text-[var(--accent)]" />
                   <span>Graduation Year: {cvData.education.year}</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <MapPin size={15} className="text-[#F2A65A]" />
+                  <MapPin size={15} className="text-[var(--accent)]" />
                   <span>{cvData.education.location}</span>
                 </div>
               </div>
 
-              <p className="text-xs sm:text-sm text-[rgba(245,243,238,0.65)] leading-relaxed border-t border-[rgba(245,243,238,0.08)] pt-4">
+              <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed border-t border-[var(--surface-border)] pt-4">
                 Completed core computer science &amp; IT curriculum covering web development, database management systems, network setup, software engineering principles, and application testing.
               </p>
             </div>
 
-            <div className="mt-6 flex flex-wrap gap-2 pt-4 border-t border-[rgba(245,243,238,0.08)]">
+            <div className="mt-6 flex flex-wrap gap-2 pt-4 border-t border-[var(--surface-border)]">
               <Badge variant="accent">BSIT 2026</Badge>
               <Badge variant="surface">Web &amp; Mobile Dev</Badge>
               <Badge variant="surface">Database Management</Badge>
@@ -59,27 +59,27 @@ export default function EducationSection() {
 
         {/* Certifications & Diplomas */}
         <AnimatedReveal direction="up" delay={0.2} className="lg:col-span-5">
-          <div className="h-full rounded-2xl border border-[rgba(245,243,238,0.1)] bg-[rgba(18,22,31,0.6)] p-6 sm:p-8 backdrop-blur-md flex flex-col justify-between">
+          <div className="h-full rounded-2xl border border-[var(--surface-border)] bg-[var(--card-bg)] p-6 sm:p-8 backdrop-blur-md flex flex-col justify-between transition-colors duration-300">
             <div>
-              <div className="flex items-center gap-2 text-base font-bold text-[#F5F3EE] mb-6 border-b border-[rgba(245,243,238,0.08)] pb-4 font-[var(--font-space-grotesk)]">
-                <Award className="text-[#F2A65A]" size={20} />
+              <div className="flex items-center gap-2 text-base font-bold text-[var(--text-primary)] mb-6 border-b border-[var(--surface-border)] pb-4 font-[var(--font-space-grotesk)]">
+                <Award className="text-[var(--accent)]" size={20} />
                 <span>Verified Certifications</span>
               </div>
 
               <div className="space-y-6">
                 {cvData.certifications.map((cert) => (
-                  <div key={cert.title} className="group rounded-xl border border-[rgba(245,243,238,0.08)] bg-[rgba(245,243,238,0.02)] p-4 transition-all duration-200 hover:border-[rgba(242,166,90,0.3)] hover:bg-[rgba(242,166,90,0.04)]">
+                  <div key={cert.title} className="group rounded-xl border border-[var(--surface-border)] bg-[var(--badge-surface-bg)] p-4 transition-all duration-200 hover:border-[var(--surface-hover-border)] hover:bg-[var(--badge-accent-bg)]">
                     <div className="flex items-start justify-between gap-2 mb-1">
-                      <h4 className="font-[var(--font-space-grotesk)] text-sm font-semibold text-[#F5F3EE] group-hover:text-[#F2A65A] transition-colors">
+                      <h4 className="font-[var(--font-space-grotesk)] text-sm font-semibold text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors">
                         {cert.title}
                       </h4>
-                      <span className="text-[11px] font-mono text-[#F2A65A] shrink-0">{cert.year}</span>
+                      <span className="text-[11px] font-mono text-[var(--accent)] shrink-0">{cert.year}</span>
                     </div>
-                    <p className="text-xs text-[rgba(245,243,238,0.6)] mb-3">
+                    <p className="text-xs text-[var(--text-muted)] mb-3">
                       Issued by {cert.issuer}
                     </p>
-                    <div className="flex items-center gap-1 text-[11px] text-[rgba(245,243,238,0.5)]">
-                      <CheckCircle2 size={13} className="text-[#F2A65A]" />
+                    <div className="flex items-center gap-1 text-[11px] text-[var(--text-muted)]">
+                      <CheckCircle2 size={13} className="text-[var(--accent)]" />
                       <span>Verified Completion</span>
                     </div>
                   </div>
@@ -87,7 +87,7 @@ export default function EducationSection() {
               </div>
             </div>
 
-            <div className="mt-6 pt-4 border-t border-[rgba(245,243,238,0.08)] text-xs text-[rgba(245,243,238,0.5)]">
+            <div className="mt-6 pt-4 border-t border-[var(--surface-border)] text-xs text-[var(--text-muted)]">
               All certificate records match Denver Tandingan&apos;s verified CV.
             </div>
           </div>

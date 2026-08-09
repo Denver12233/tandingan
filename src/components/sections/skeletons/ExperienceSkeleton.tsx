@@ -7,9 +7,9 @@ export default function ExperienceSkeleton() {
       <SectionHeadingSkeleton align="left" />
 
       <div className="space-y-8">
-        <div className="rounded-2xl border border-[rgba(245,243,238,0.1)] bg-[rgba(18,22,31,0.6)] p-6 sm:p-8 backdrop-blur-md">
+        <div className="rounded-2xl border border-[var(--surface-border)] bg-[var(--card-bg)] p-6 sm:p-8 backdrop-blur-md">
           {/* Header Row */}
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[rgba(245,243,238,0.08)] pb-6 mb-6">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[var(--surface-border)] pb-6 mb-6">
             <div className="space-y-2">
               <Skeleton className="h-4 w-44" rounded="rounded-md" />
               <Skeleton className="h-7 sm:h-8 w-64 sm:w-80" rounded="rounded-lg" />
@@ -18,7 +18,7 @@ export default function ExperienceSkeleton() {
           </div>
 
           {/* Project Spotlight Bar */}
-          <div className="mb-6 p-4 rounded-xl bg-[rgba(242,166,90,0.06)] border border-[rgba(242,166,90,0.15)] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="mb-6 p-4 rounded-xl bg-[var(--badge-accent-bg)] border border-[var(--badge-accent-border)] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <Skeleton className="h-4 w-64" rounded="rounded-md" />
             <div className="flex flex-wrap gap-2">
               <Skeleton className="h-6 w-32" rounded="rounded-full" />
@@ -44,7 +44,7 @@ export default function ExperienceSkeleton() {
           </div>
 
           {/* Tech Stack Footer */}
-          <div className="mt-8 pt-6 border-t border-[rgba(245,243,238,0.08)] flex flex-wrap items-center gap-2">
+          <div className="mt-8 pt-6 border-t border-[var(--surface-border)] flex flex-wrap items-center gap-2">
             <Skeleton className="h-4 w-28 mr-2" rounded="rounded-md" />
             {Array.from({ length: 6 }).map((_, i) => (
               <Skeleton key={i} className="h-6 w-20 sm:w-24" rounded="rounded-full" />

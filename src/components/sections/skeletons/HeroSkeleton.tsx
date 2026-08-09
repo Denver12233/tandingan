@@ -37,7 +37,7 @@ export default function HeroSkeleton() {
       </div>
 
       {/* Highlights / Meta Stats Bar Skeleton */}
-      <div className="mt-14 pt-8 border-t border-[rgba(245,243,238,0.08)] grid grid-cols-2 sm:grid-cols-3 gap-6 max-w-2xl">
+      <div className="mt-14 pt-8 border-t border-[var(--surface-border)] grid grid-cols-2 sm:grid-cols-3 gap-6 max-w-2xl">
         {Array.from({ length: 3 }).map((_, i) => (
           <div key={i} className={i === 2 ? "col-span-2 sm:col-span-1" : ""}>
             <Skeleton className="h-8 sm:h-9 w-28 mb-2" rounded="rounded-lg" />

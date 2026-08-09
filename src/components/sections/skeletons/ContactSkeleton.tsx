@@ -6,7 +6,7 @@ export default function ContactSkeleton() {
     <div className="py-20 sm:py-28 px-6 sm:px-10 max-w-6xl mx-auto">
       <SectionHeadingSkeleton align="center" />
 
-      <div className="max-w-3xl mx-auto rounded-3xl border border-[rgba(242,166,90,0.25)] bg-[rgba(18,22,31,0.8)] p-8 sm:p-12 backdrop-blur-xl text-center shadow-[0_16px_48px_rgba(0,0,0,0.4)] relative overflow-hidden">
+      <div className="max-w-3xl mx-auto rounded-3xl border border-[var(--badge-accent-border)] bg-[var(--card-bg)] p-8 sm:p-12 backdrop-blur-xl text-center shadow-2xl relative overflow-hidden">
         {/* Title & Description Skeleton */}
         <Skeleton className="h-8 sm:h-9 w-3/4 mx-auto mb-3" rounded="rounded-lg" />
         <div className="max-w-xl mx-auto space-y-2 mb-8">
@@ -19,7 +19,7 @@ export default function ContactSkeleton() {
           {Array.from({ length: 3 }).map((_, i) => (
             <div
               key={i}
-              className="rounded-2xl border border-[rgba(245,243,238,0.08)] bg-[rgba(245,243,238,0.03)] p-4 flex flex-col justify-between"
+              className="rounded-2xl border border-[var(--surface-border)] bg-[var(--badge-surface-bg)] p-4 flex flex-col justify-between"
             >
               <div>
                 <Skeleton className="h-9 w-9 mb-3" rounded="rounded-xl" />

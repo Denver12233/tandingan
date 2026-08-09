@@ -10,7 +10,7 @@ export default function AboutSkeleton() {
         {/* Left Column: Story Card + Focus Grid */}
         <div className="lg:col-span-7 space-y-6">
           {/* Main Background Story Card */}
-          <div className="rounded-2xl border border-[rgba(245,243,238,0.1)] bg-[rgba(18,22,31,0.6)] p-6 sm:p-8 backdrop-blur-md">
+          <div className="rounded-2xl border border-[var(--surface-border)] bg-[var(--card-bg)] p-6 sm:p-8 backdrop-blur-md">
             <Skeleton className="h-6 w-64 mb-4" rounded="rounded-lg" />
             <div className="space-y-2.5 mb-4">
               <Skeleton className="h-4 w-full" rounded="rounded-md" />
@@ -28,7 +28,7 @@ export default function AboutSkeleton() {
             {Array.from({ length: 2 }).map((_, i) => (
               <div
                 key={i}
-                className="rounded-2xl border border-[rgba(245,243,238,0.08)] bg-[rgba(18,22,31,0.4)] p-5"
+                className="rounded-2xl border border-[var(--surface-border)] bg-[var(--card-subtle-bg)] p-5"
               >
                 <Skeleton className="h-10 w-10 mb-3" rounded="rounded-xl" />
                 <Skeleton className="h-5 w-36 mb-2" rounded="rounded-md" />
@@ -44,13 +44,13 @@ export default function AboutSkeleton() {
         {/* Right Column: Certifications & Soft Skills */}
         <div className="lg:col-span-5 space-y-6">
           {/* Certifications Spotlight */}
-          <div className="rounded-2xl border border-[rgba(242,166,90,0.2)] bg-[rgba(242,166,90,0.04)] p-6 backdrop-blur-md">
+          <div className="rounded-2xl border border-[var(--badge-accent-border)] bg-[var(--badge-accent-bg)] p-6 backdrop-blur-md">
             <Skeleton className="h-5 w-48 mb-4" rounded="rounded-md" />
             <div className="space-y-4">
               {Array.from({ length: 3 }).map((_, i) => (
                 <div
                   key={i}
-                  className="flex items-start gap-3 border-b border-[rgba(245,243,238,0.08)] pb-3 last:border-0 last:pb-0"
+                  className="flex items-start gap-3 border-b border-[var(--surface-border)] pb-3 last:border-0 last:pb-0"
                 >
                   <Skeleton className="h-4 w-4 mt-0.5" rounded="rounded-full" />
                   <div className="flex-1 space-y-1.5">
@@ -63,7 +63,7 @@ export default function AboutSkeleton() {
           </div>
 
           {/* Soft Skills */}
-          <div className="rounded-2xl border border-[rgba(245,243,238,0.1)] bg-[rgba(18,22,31,0.6)] p-6 backdrop-blur-md">
+          <div className="rounded-2xl border border-[var(--surface-border)] bg-[var(--card-bg)] p-6 backdrop-blur-md">
             <Skeleton className="h-5 w-44 mb-4" rounded="rounded-md" />
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               {Array.from({ length: 6 }).map((_, i) => (

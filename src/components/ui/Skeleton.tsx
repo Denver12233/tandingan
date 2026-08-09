@@ -27,13 +27,13 @@ export default function Skeleton({
       aria-hidden="true"
       style={customStyles}
       className={cn(
-        "relative overflow-hidden bg-[#12161F] border border-[rgba(245,243,238,0.06)] shrink-0",
+        "relative overflow-hidden bg-[var(--skeleton-bg)] border border-[var(--skeleton-border)] shrink-0 transition-colors duration-300",
         rounded,
         className
       )}
     >
       <div
-        className="animate-shimmer absolute inset-0 -translate-x-full pointer-events-none bg-gradient-to-r from-transparent via-[rgba(245,243,238,0.08)] to-transparent"
+        className="animate-shimmer absolute inset-0 -translate-x-full pointer-events-none bg-gradient-to-r from-transparent via-[var(--skeleton-shimmer)] to-transparent"
       />
     </div>
   );

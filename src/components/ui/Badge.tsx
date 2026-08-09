@@ -12,10 +12,10 @@ export default function Badge({ children, variant = "surface", className = "" }:
     "inline-flex items-center rounded-full px-3 py-1 text-xs font-medium transition-colors duration-200";
 
   const variants = {
-    accent: "bg-[rgba(242,166,90,0.12)] text-[#F2A65A] border border-[rgba(242,166,90,0.25)]",
-    surface: "bg-[rgba(245,243,238,0.06)] text-[#F5F3EE] border border-[rgba(245,243,238,0.12)]",
-    outline: "bg-transparent text-[rgba(245,243,238,0.8)] border border-[rgba(245,243,238,0.2)]",
-    ghost: "bg-transparent text-[rgba(245,243,238,0.65)]",
+    accent: "bg-[var(--badge-accent-bg)] text-[var(--badge-accent-text)] border border-[var(--badge-accent-border)]",
+    surface: "bg-[var(--badge-surface-bg)] text-[var(--badge-surface-text)] border border-[var(--badge-surface-border)]",
+    outline: "bg-transparent text-[var(--text-secondary)] border border-[var(--surface-border)]",
+    ghost: "bg-transparent text-[var(--text-muted)]",
   };
 
   return <span className={cn(baseStyles, variants[variant], className)}>{children}</span>;
