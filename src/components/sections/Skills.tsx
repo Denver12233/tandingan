@@ -175,6 +175,18 @@ function MarqueeRow({
 
 export default function Skills() {
   const shouldReduceMotion = useReducedMotion() ?? false;
+  const labelsRef = useRef<HTMLDivElement | null>(null);
+  const [labelsOverflow, setLabelsOverflow] = useState(false);
+
+  useEffect(() => {
+    const el = labelsRef.current;
+    if (!el) return;
+    const update = () => setLabelsOverflow(el.scrollWidth > el.clientWidth + 1);
+    update();
+    const observer = new ResizeObserver(() => update());
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section id="skills" className="py-20 sm:py-28 px-6 sm:px-10 max-w-6xl mx-auto">
@@ -185,20 +197,30 @@ export default function Skills() {
       />
 
       <AnimatedReveal direction="up" delay={0.05}>
-        <div className="flex items-center justify-center gap-1 sm:gap-2 -mt-6 md:-mt-10 mb-10 sm:mb-12">
-          {GROUP_ORDER.map((name, index) => (
-            <div key={name} className="flex items-center">
-              {index > 0 && (
-                <span aria-hidden="true" className="h-6 w-px bg-[var(--surface-border)] mx-2 sm:mx-3" />
-              )}
-              <span
-                className={`font-[var(--font-space-grotesk)] text-2xl sm:text-3xl font-bold leading-none ${index === 0 ? "text-[var(--accent)]" : "text-[var(--text-secondary)]"
-                  }`}
-              >
-                {name}
-              </span>
-            </div>
-          ))}
+        <div
+          ref={labelsRef}
+          className="overflow-x-auto scrollbar-hide [-webkit-overflow-scrolling:touch] -mt-6 md:-mt-10 mb-10 sm:mb-12"
+          style={
+            labelsOverflow
+              ? { WebkitMaskImage: EDGE_MASK, maskImage: EDGE_MASK }
+              : undefined
+          }
+        >
+          <div className="mx-auto flex w-fit items-center gap-1 sm:gap-2">
+            {GROUP_ORDER.map((name, index) => (
+              <div key={name} className="flex shrink-0 items-center">
+                {index > 0 && (
+                  <span aria-hidden="true" className="h-6 w-px shrink-0 bg-[var(--surface-border)] mx-1.5 sm:mx-3" />
+                )}
+                <span
+                  className={`font-[var(--font-space-grotesk)] text-lg sm:text-2xl md:text-3xl font-bold leading-none ${index === 0 ? "text-[var(--accent)]" : "text-[var(--text-secondary)]"
+                    }`}
+                >
+                  {name}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </AnimatedReveal>
 
