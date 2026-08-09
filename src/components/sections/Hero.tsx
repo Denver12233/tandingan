@@ -101,7 +101,7 @@ export default function Hero() {
               </span>
             </h1>
             <p className="mt-3 font-[var(--font-space-grotesk)] text-xl sm:text-2xl md:text-3xl font-semibold text-[var(--text-secondary)] leading-snug">
-              Software &amp; Web Application Developer
+              BSIT Graduate &amp; Aspiring Developer
             </p>
           </motion.div>
 
