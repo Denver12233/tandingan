@@ -81,7 +81,7 @@ export default function Experience() {
                   Technologies Used:
                 </span>
                 {exp.techStack.map((tech) => (
-                  <Badge key={tech} variant="surface">
+                  <Badge key={tech} variant="surface" tech={tech}>
                     {tech}
                   </Badge>
                 ))}

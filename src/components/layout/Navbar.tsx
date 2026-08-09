@@ -127,7 +127,7 @@ export default function Navbar() {
                     <motion.span
                       layoutId="navDot"
                       transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                      className="absolute -bottom-2 left-0 right-0 mx-auto h-1.5 w-1.5 rounded-full bg-[var(--accent)] shadow-[0_0_8px_var(--accent)]"
+                      className="absolute -bottom-2 left-0 right-0 mx-auto h-1.5 w-1.5 rounded-full bg-[var(--accent)]"
                     />
                   ) : null}
                 </li>

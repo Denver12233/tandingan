@@ -126,7 +126,7 @@ export default function Hero() {
               <Terminal size={14} className="text-[var(--accent)]" /> Core Stack:
             </span>
             {heroContent.topSkills.map((tech) => (
-              <Badge key={tech} variant="accent">
+              <Badge key={tech} variant="accent" tech={tech}>
                 {tech}
               </Badge>
             ))}

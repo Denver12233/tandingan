@@ -2,6 +2,7 @@
 
 import { Code, Database, Layers, Wrench } from "lucide-react";
 import { cvData } from "@/src/data/cv-data";
+import { techIcons } from "@/src/lib/techIcons";
 import AnimatedReveal from "../ui/AnimatedReveal";
 import SectionHeading from "../ui/SectionHeading";
 
@@ -35,15 +36,22 @@ export default function Skills() {
               </div>
 
               <div className="flex flex-wrap gap-2.5">
-                {category.skills.map((skill) => (
-                  <div
-                    key={skill}
-                    className="inline-flex items-center gap-2 rounded-xl bg-[var(--badge-surface-bg)] border border-[var(--badge-surface-border)] px-3.5 py-2 text-xs sm:text-sm font-medium text-[var(--badge-surface-text)] transition-all duration-200 hover:bg-[var(--badge-accent-bg)] hover:border-[var(--badge-accent-border)] hover:text-[var(--badge-accent-text)]"
-                  >
-                    <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)]" />
-                    <span>{skill}</span>
-                  </div>
-                ))}
+                {category.skills.map((skill) => {
+                  const Icon = techIcons[skill];
+                  return (
+                    <div
+                      key={skill}
+                      className="inline-flex items-center gap-2 rounded-xl bg-[var(--badge-surface-bg)] border border-[var(--badge-surface-border)] px-3.5 py-2 text-xs sm:text-sm font-medium text-[var(--badge-surface-text)] transition-all duration-200 hover:bg-[var(--badge-accent-bg)] hover:border-[var(--badge-accent-border)] hover:text-[var(--badge-accent-text)]"
+                    >
+                      {Icon ? (
+                        <Icon className="h-3.5 w-3.5 shrink-0" />
+                      ) : (
+                        <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)]" />
+                      )}
+                      <span>{skill}</span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </AnimatedReveal>
