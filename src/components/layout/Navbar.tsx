@@ -49,8 +49,8 @@ export default function Navbar() {
       },
       {
         root: null,
-        rootMargin: "-25% 0px -45% 0px",
-        threshold: [0.1, 0.3, 0.6],
+        rootMargin: "-35% 0px -55% 0px",
+        threshold: [0, 0.2, 0.4, 0.6, 0.8, 1],
       }
     );
 
@@ -75,11 +75,15 @@ export default function Navbar() {
 
   return (
     <motion.header
+      style={{
+        backdropFilter: "blur(16px) saturate(180%)",
+        WebkitBackdropFilter: "blur(16px) saturate(180%)",
+      }}
       className={cn(
-        "fixed top-4 left-0 right-0 z-50 mx-auto w-[calc(100%-32px)] max-w-4xl rounded-full border transition-all duration-300",
+        "fixed top-4 left-0 right-0 z-[100] mx-auto w-[calc(100%-32px)] max-w-4xl rounded-full border transition-all duration-300",
         isScrolled
-          ? "border-[var(--nav-border-scrolled)] bg-[var(--nav-bg-scrolled)] shadow-[0_8px_32px_rgba(0,0,0,0.15)] backdrop-blur-2xl"
-          : "border-[var(--nav-border-unscrolled)] bg-[var(--nav-bg-unscrolled)] backdrop-blur-xl"
+          ? "border-[var(--nav-border-scrolled)] bg-[var(--nav-bg-scrolled)] shadow-[0_8px_32px_rgba(0,0,0,0.18)]"
+          : "border-[var(--nav-border-unscrolled)] bg-[var(--nav-bg-unscrolled)] shadow-[0_4px_20px_rgba(0,0,0,0.08)]"
       )}
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
@@ -105,7 +109,7 @@ export default function Navbar() {
               const isActive = activeSection === link.href;
 
               return (
-                <li key={link.href} className="relative py-1">
+                <li key={link.href} className="relative">
                   <a
                     href={link.href}
                     onClick={(event) => handleNavClick(event, link.href)}
@@ -122,22 +126,9 @@ export default function Navbar() {
                   {isActive ? (
                     <motion.span
                       layoutId="navDot"
-                      transition={{ type: "spring", stiffness: 350, damping: 28 }}
-                      className="absolute left-1/2 -bottom-2 -translate-x-1/2 flex items-center justify-center pointer-events-none"
-                    >
-                      {/* Outer ambient glow ring pulse */}
-                      <motion.span
-                        animate={{ scale: [1, 1.45, 1], opacity: [0.4, 0.85, 0.4] }}
-                        transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut" }}
-                        className="absolute h-3.5 w-3.5 rounded-full bg-[var(--accent)] blur-[3px]"
-                      />
-                      {/* Inner pulsing glowing dot */}
-                      <motion.span
-                        animate={{ scale: [1, 1.18, 1] }}
-                        transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut" }}
-                        className="relative h-1.5 w-1.5 rounded-full bg-[var(--accent)] shadow-[0_0_8px_2px_var(--accent)]"
-                      />
-                    </motion.span>
+                      transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                      className="absolute -bottom-2 left-0 right-0 mx-auto h-1.5 w-1.5 rounded-full bg-[var(--accent)] shadow-[0_0_8px_var(--accent)]"
+                    />
                   ) : null}
                 </li>
               );
@@ -213,21 +204,32 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="absolute top-16 left-0 right-0 z-40 max-h-[calc(100vh-100px)] overflow-y-auto rounded-2xl border border-[var(--surface-border)] bg-[var(--nav-menu-bg)] p-4 shadow-2xl backdrop-blur-2xl md:hidden"
+            style={{
+              backdropFilter: "blur(20px) saturate(180%)",
+              WebkitBackdropFilter: "blur(20px) saturate(180%)",
+            }}
+            className="absolute top-16 left-0 right-0 z-40 max-h-[calc(100vh-100px)] overflow-y-auto rounded-2xl border border-[var(--surface-border)] bg-[var(--nav-menu-bg)] p-4 shadow-2xl md:hidden"
           >
             <ul className="space-y-1">
               {navLinks.map((link: NavLink) => {
                 const isActive = activeSection === link.href;
 
                 return (
-                  <li key={link.href}>
+                  <li key={link.href} className="relative">
+                    {isActive ? (
+                      <motion.span
+                        layoutId="navDotMobile"
+                        transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                        className="absolute inset-0 rounded-xl bg-[var(--badge-accent-bg)]"
+                      />
+                    ) : null}
                     <a
                       href={link.href}
                       onClick={(event) => handleNavClick(event, link.href)}
                       className={cn(
-                        "flex items-center rounded-xl px-4 min-h-[44px] text-sm font-medium transition duration-200",
+                        "relative flex items-center rounded-xl px-4 min-h-[44px] text-sm font-medium transition duration-200",
                         isActive
-                          ? "bg-[var(--badge-accent-bg)] text-[var(--badge-accent-text)] font-semibold"
+                          ? "text-[var(--badge-accent-text)] font-semibold"
                           : "text-[var(--text-secondary)] hover:bg-[var(--btn-secondary-bg)] hover:text-[var(--text-primary)]"
                       )}
                     >

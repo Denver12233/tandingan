@@ -32,11 +32,11 @@
 
   --card-bg: rgba(18, 22, 31, 0.6);
   --card-subtle-bg: rgba(18, 22, 31, 0.4);
-  --nav-bg-scrolled: rgba(11, 14, 20, 0.94);
-  --nav-bg-unscrolled: rgba(18, 22, 31, 0.85);
+  --nav-bg-scrolled: rgba(18, 22, 31, 0.68);
+  --nav-bg-unscrolled: rgba(18, 22, 31, 0.55);
   --nav-border-scrolled: rgba(245, 243, 238, 0.15);
   --nav-border-unscrolled: rgba(245, 243, 238, 0.1);
-  --nav-menu-bg: rgba(11, 14, 20, 0.96);
+  --nav-menu-bg: rgba(18, 22, 31, 0.85);
 
   --grid-line: rgba(245, 243, 238, 0.03);
   --grid-glow: rgba(242, 166, 90, 0.06);
@@ -80,11 +80,11 @@
 
   --card-bg: #ffffff;
   --card-subtle-bg: rgba(255, 255, 255, 0.85);
-  --nav-bg-scrolled: rgba(250, 247, 242, 0.95);
-  --nav-bg-unscrolled: rgba(255, 255, 255, 0.9);
-  --nav-border-scrolled: rgba(26, 26, 24, 0.15);
+  --nav-bg-scrolled: rgba(255, 255, 255, 0.72);
+  --nav-bg-unscrolled: rgba(255, 255, 255, 0.6);
+  --nav-border-scrolled: rgba(26, 26, 24, 0.16);
   --nav-border-unscrolled: rgba(26, 26, 24, 0.12);
-  --nav-menu-bg: #ffffff;
+  --nav-menu-bg: rgba(255, 255, 255, 0.9);
 
   --grid-line: rgba(26, 26, 24, 0.04);
   --grid-glow: rgba(201, 122, 46, 0.1);
@@ -141,6 +141,21 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent);
+}
+
+/* Typewriter caret animation */
+@keyframes caret-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.caret-blink {
+  animation: caret-blink 0.8s steps(2, start) infinite;
 }
 
 /* Skeleton Shimmer Sweep Animation */
