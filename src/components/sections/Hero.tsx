@@ -116,21 +116,6 @@ export default function Hero() {
           </motion.p>
 
           {/* Strongest Relevant Technical Skills */}
-          <motion.div
-            initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45, delay: 0.25 }}
-            className="mt-6 flex flex-wrap items-center gap-2"
-          >
-            <span className="text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)] mr-2 flex items-center gap-1">
-              <Terminal size={14} className="text-[var(--accent)]" /> Core Stack:
-            </span>
-            {heroContent.topSkills.map((tech) => (
-              <Badge key={tech} variant="accent" tech={tech}>
-                {tech}
-              </Badge>
-            ))}
-          </motion.div>
 
           {/* Call to Action Buttons */}
           <motion.div
@@ -196,7 +181,7 @@ export default function Hero() {
                 </div>
               ) : (
                 <Image
-                  src="/profile1.jpg"
+                  src="/profile2.jpg"
                   alt={`${heroContent.name} — profile photo`}
                   fill
                   sizes="(max-width: 768px) 75vw, 40vw"
