@@ -49,6 +49,15 @@ export default function Hero() {
       />
       <div className="pointer-events-none absolute top-1/4 right-1/4 h-72 w-72 rounded-full bg-[var(--grid-glow)] blur-3xl -z-10" />
 
+      {/* SVG clipPath definition — invisible, just registers the shape for reuse */}
+      <svg width="0" height="0" className="absolute">
+        <defs>
+          <clipPath id="splashClip" clipPathUnits="objectBoundingBox">
+            <path d="M 0.15,0.03 C 0.35,-0.02, 0.55,0.01, 0.72,0.06 C 0.85,0.1, 0.8,0.2, 0.92,0.24 C 1.03,0.28, 1.0,0.4, 0.95,0.5 C 0.9,0.6, 1.0,0.68, 0.94,0.78 C 0.88,0.88, 0.95,0.95, 0.82,0.98 C 0.68,1.02, 0.6,0.92, 0.46,0.97 C 0.32,1.02, 0.2,0.98, 0.1,0.9 C 0.02,0.83, 0.08,0.72, 0.03,0.6 C -0.02,0.48, 0.05,0.38, 0.02,0.26 C -0.01,0.16, 0.05,0.08, 0.15,0.03 Z" />
+          </clipPath>
+        </defs>
+      </svg>
+
       <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-[3fr_2fr] md:gap-10 lg:gap-14">
         {/* Left Column — Text Content */}
         <div className="order-2 md:order-1">
@@ -162,24 +171,32 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Right Column — Profile Photo */}
+        {/* Right Column — Profile Photo with jagged splash-shaped clip-path */}
         <AnimatedReveal delay={0.15} className="order-1 md:order-2">
-          <div className="relative mx-auto w-full max-w-[280px] sm:max-w-[340px]">
-            {/* Amber gradient glow ring */}
+          <div className="relative mx-auto w-full max-w-[320px] sm:max-w-[400px]">
+            {/* Ambient background glow behind the photo */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute -inset-3 rounded-[2rem] bg-[linear-gradient(135deg,var(--accent-border),transparent_55%,var(--accent))] opacity-60 blur-2xl"
+              className="pointer-events-none absolute inset-0 rounded-full bg-[var(--grid-glow)] blur-3xl opacity-50"
             />
-            <div className="relative aspect-square overflow-hidden rounded-2xl border-2 border-[var(--accent)] bg-[var(--surface)] shadow-[0_0_40px_var(--accent-glow)]">
+
+            {/* Single photo, clipped into an irregular splash/torn-edge silhouette */}
+            <div
+              className="relative aspect-[4/5] w-full overflow-hidden"
+              style={{
+                clipPath: "url(#splashClip)",
+                filter: "drop-shadow(0 8px 20px rgba(0,0,0,0.15))",
+              }}
+            >
               {imageFailed ? (
-                <div className="flex h-full w-full items-center justify-center">
-                  <span className="font-[var(--font-space-grotesk)] text-6xl font-bold text-[var(--accent)]">
+                <div className="flex h-full w-full items-center justify-center bg-[var(--badge-accent-bg)]">
+                  <span className="font-[var(--font-space-grotesk)] text-5xl font-bold text-[var(--accent)]">
                     {initials}
                   </span>
                 </div>
               ) : (
                 <Image
-                  src="/images/profile.jpg"
+                  src="/profile1.jpg"
                   alt={`${heroContent.name} — profile photo`}
                   fill
                   sizes="(max-width: 768px) 75vw, 40vw"

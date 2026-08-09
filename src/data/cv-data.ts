@@ -39,7 +39,7 @@ export const cvData = {
     phone: "(+63) 992 203 2589",
     location: "Urdaneta City, Pangasinan",
     summary:
-      "I am a fresh IT graduate with practical experience in software and web application development gained during my internship at MakerSpace InnovHub OPC. I have knowledge of both frontend and backend web development, with particular interest in backend logic, database management, and solving technical problems that keep an application running smoothly. During my internship, I contributed to real projects that involved building application features, managing databases, migrating data between systems, and testing applications before deployment. I am comfortable learning new tools quickly and enjoy working closely with a team to figure out the best way to get things done.",
+      "I’m a fresh IT graduate passionate about building practical and reliable software solutions. I enjoy working with backend development, databases, and solving technical problems. I’m a fast learner who’s always eager to take on new challenges and grow as a developer. ",
     interests: ["Backend Logic", "Database Management", "Data Migration", "Web Development", "Application Testing"],
   },
   education: {
