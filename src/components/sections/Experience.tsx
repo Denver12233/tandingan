@@ -14,6 +14,15 @@ const GITHUB_THEME = {
   dark: ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"],
 };
 
+function formatTooltipText(activity: Activity): string {
+  const date = new Date(`${activity.date}T00:00:00`).toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+  });
+  if (activity.count === 0) return `No contributions on ${date}`;
+  return `${activity.count} contribution${activity.count === 1 ? "" : "s"} on ${date}`;
+}
+
 type GithubContributionsResponse = {
   total: number;
   contributions: Activity[];
@@ -167,6 +176,12 @@ export default function Experience() {
                       fontSize={isCompact ? 11 : 14}
                       theme={GITHUB_THEME}
                       labels={{ totalCount: "{{count}} contributions in Feb – May 2026" }}
+                      tooltips={{
+                        activity: {
+                          text: formatTooltipText,
+                          withArrow: true,
+                        },
+                      }}
                     />
                   )}
                 </div>
