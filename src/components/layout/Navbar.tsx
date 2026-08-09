@@ -78,23 +78,29 @@ export default function Navbar() {
   return (
     <motion.header
       className={cn(
-        "fixed top-4 left-1/2 z-50 w-[calc(100%-32px)] max-w-3xl -translate-x-1/2",
-        "rounded-full border border-white/10 bg-black/40 shadow-lg shadow-black/20 backdrop-blur-xl transition duration-[250ms]",
-        isScrolled ? "bg-black/70" : "bg-black/40"
+        "fixed top-[20px] left-1/2 z-50 w-[calc(100%-32px)] max-w-[760px] -translate-x-1/2 rounded-full",
+        "border border-[rgba(245,243,238,0.09)] shadow-[0_8px_32px_rgba(0,0,0,0.25)] backdrop-blur-[20px] transition duration-[250ms]",
+        isScrolled
+          ? "bg-[rgba(18,22,31,0.82)] shadow-[0_8px_28px_rgba(0,0,0,0.4)]"
+          : "bg-[rgba(18,22,31,0.55)]"
       )}
       initial={false}
     >
-      <div className="flex items-center justify-between gap-4 px-4 py-3">
+      <div className={cn(
+        "flex items-center justify-between gap-[28px] px-[22px]",
+        isScrolled ? "py-[10px]" : "py-[14px]"
+      )}>
         <a
           href="#home"
           onClick={(event) => handleNavClick(event, "#home")}
-          className="text-sm font-medium text-white transition hover:text-slate-200"
+          className="text-[14px] font-[600] text-[#F5F3EE] transition-colors duration-200"
         >
-          {siteConfig.name}
+          denver
+          <span className="text-[#F2A65A]">.dev</span>
         </a>
 
-        <nav className="hidden items-center gap-8 md:flex">
-          <ul className="flex items-center gap-6">
+        <nav className="hidden min-w-0 md:flex">
+          <ul className="flex items-center gap-[28px] whitespace-nowrap">
             {navLinks.map((link: NavLink) => {
               const isActive = activeSection === link.href;
 
@@ -104,8 +110,10 @@ export default function Navbar() {
                     href={link.href}
                     onClick={(event) => handleNavClick(event, link.href)}
                     className={cn(
-                      "text-sm transition-colors duration-200",
-                      isActive ? "font-semibold text-white" : "text-slate-300 hover:text-white"
+                      "text-[14px] font-[500] transition-colors duration-200",
+                      isActive
+                        ? "text-[#F5F3EE]"
+                        : "text-[rgba(245,243,238,0.65)] hover:text-[#F5F3EE]"
                     )}
                   >
                     {link.label}
@@ -114,7 +122,8 @@ export default function Navbar() {
                   {isActive ? (
                     <motion.span
                       layoutId="navDot"
-                      className="absolute left-1/2 bottom-[-6px] h-1.5 w-1.5 -translate-x-1/2 rounded-full bg-white"
+                      transition={{ type: "spring", stiffness: 260, damping: 28 }}
+                      className="absolute left-1/2 bottom-[-8px] h-[4px] w-[4px] -translate-x-1/2 rounded-full bg-[#F2A65A]"
                     />
                   ) : null}
                 </li>
@@ -127,9 +136,9 @@ export default function Navbar() {
           <a
             href={siteConfig.resumeUrl}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             download
-            className="rounded-full bg-white px-4 py-1.5 text-sm font-semibold text-black transition hover:bg-slate-100"
+            className="inline-flex items-center justify-center rounded-full bg-[#F5F3EE] px-[16px] py-[8px] text-[13px] font-[600] text-[#0B0E14] transition duration-200 hover:bg-[#F2A65A] hover:-translate-y-[1px]"
           >
             Resume
           </a>
@@ -137,9 +146,10 @@ export default function Navbar() {
 
         <button
           type="button"
-          onClick={() => setMobileOpen((current) => !current)}
+          aria-expanded={mobileOpen}
           aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-black/30 text-white transition hover:bg-black/50 md:hidden"
+          onClick={() => setMobileOpen((current) => !current)}
+          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[rgba(245,243,238,0.15)] bg-[rgba(0,0,0,0.3)] text-[#F5F3EE] transition duration-200 hover:bg-[rgba(0,0,0,0.5)] md:hidden"
         >
           {mobileOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
@@ -153,9 +163,9 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.25 }}
-            className="fixed top-[78px] left-4 right-4 z-40 rounded-3xl border border-white/10 bg-black/40 p-4 shadow-lg shadow-black/20 backdrop-blur-xl md:hidden"
+            className="fixed top-[78px] left-4 right-4 z-40 rounded-[22px] border border-[rgba(245,243,238,0.09)] bg-[rgba(18,22,31,0.55)] p-4 shadow-[0_8px_32px_rgba(0,0,0,0.25)] backdrop-blur-[20px] md:hidden"
           >
-            <ul className="space-y-3">
+            <ul className="space-y-2">
               {navLinks.map((link: NavLink) => {
                 const isActive = activeSection === link.href;
 
@@ -165,10 +175,10 @@ export default function Navbar() {
                       href={link.href}
                       onClick={(event) => handleNavClick(event, link.href)}
                       className={cn(
-                        "block rounded-2xl px-4 py-3 text-sm transition duration-200",
+                        "block rounded-[18px] px-4 text-[14px] min-h-[44px] leading-[44px] transition duration-200",
                         isActive
-                          ? "bg-white/10 text-white"
-                          : "text-slate-300 hover:bg-white/10 hover:text-white"
+                          ? "bg-[rgba(245,243,238,0.08)] text-[#F5F3EE]"
+                          : "text-[rgba(245,243,238,0.75)] hover:bg-[rgba(245,243,238,0.08)] hover:text-[#F5F3EE]"
                       )}
                     >
                       {link.label}
@@ -181,9 +191,9 @@ export default function Navbar() {
               <a
                 href={siteConfig.resumeUrl}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 download
-                className="inline-flex w-full items-center justify-center rounded-full bg-white px-4 py-3 text-sm font-semibold text-black transition hover:bg-slate-100"
+                className="inline-flex w-full items-center justify-center rounded-full bg-[#F5F3EE] px-[16px] min-h-[44px] text-[13px] font-[600] text-[#0B0E14] transition duration-200 hover:bg-[#F2A65A] hover:-translate-y-[1px]"
               >
                 Resume
               </a>
