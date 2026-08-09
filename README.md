@@ -1,156 +1,120 @@
-# Denver Portfolio
+# Denver Tandingan — Personal Portfolio
 
 ## Project Overview
 
-This repository is a Next.js portfolio website built with the App Router and TypeScript. It is designed as a developer landing page with a responsive navbar, hero section, and supporting page sections for portfolio content.
+This repository contains the personal portfolio website for **Denver Tandingan**, a **BSIT Fresh Graduate** (Class of 2026, University of Eastern Pangasinan) specializing in **Software & Web Application Development**, backend logic, database management, and web development.
 
-The project is intended to showcase a small portfolio site structure with reusable UI components, Tailwind CSS styling, motion-based animations, and a contact API route.
+The application is built using **Next.js 16 (App Router)**, **React 19**, **TypeScript**, **Tailwind CSS v4**, and **Framer Motion (`motion/react`)**. The site is structured strictly around Denver's CV as the single source of truth, featuring a fixed floating navigation bar, recruiter-focused sections, smooth scrolling, and custom responsive animations.
+
+---
+
+## Portfolio Sections
+
+The portfolio consists of 6 primary sections:
+
+1. **Home (`#home`)**: Hero introduction, graduate background, core tech stack, key highlights, and primary CTAs.
+2. **About (`#about`)**: Educational background, technical focus, soft skills grid, and verified certifications.
+3. **Skills (`#skills`)**: Categorized technical skills (Frameworks, Languages, Databases, Technical Competencies) without fake percentage bars.
+4. **Experience (`#experience`)**: Timeline card detailing 500-hour OJT Developer Internship at MakerSpace InnovHub OPC and project contributions.
+5. **Education (`#education`)**: Degree details from University of Eastern Pangasinan and verified certifications.
+6. **Contact (`#contact`)**: Direct email link, phone, location, interactive email copy button, and CV download action.
+
+---
 
 ## Folder Structure
 
 ```
 .
-├── AGENTS.md
-├── CLAUDE.md
-├── README.md
-├── app
-│   ├── favicon.ico
-│   ├── globals.css
-│   ├── layout.tsx
-│   └── page.tsx
-├── next-env.d.ts
-├── next.config.ts
-├── package-lock.json
-├── package.json
-├── postcss.config.mjs
-├── public
-│   ├── file.svg
-│   ├── globe.svg
-│   ├── next.svg
-│   ├── og-image.png
-│   ├── resume.pdf
-│   ├── vercel.svg
-│   └── window.svg
-├── src
-│   ├── app
-│   │   └── api
-│   │       └── contact
-│   │           └── route.ts
-│   ├── components
-│   │   ├── layout
-│   │   │   ├── Footer.tsx
-│   │   │   └── Navbar.tsx
-│   │   ├── sections
-│   │   │   ├── About.tsx
-│   │   │   ├── Contact.tsx
-│   │   │   ├── Education.tsx
-│   │   │   ├── Experience.tsx
-│   │   │   ├── Hero.tsx
-│   │   │   ├── Projects.tsx
-│   │   │   └── Skills.tsx
-│   │   └── ui
-│   │       ├── AnimatedReveal.tsx
-│   │       ├── Badge.tsx
-│   │       ├── Button.tsx
-│   │       ├── ProjectCard.tsx
-│   │       └── SectionHeading.tsx
-│   ├── data
-│   │   ├── experience.ts
-│   │   ├── projects.ts
-│   │   ├── skills.ts
-│   │   └── site-config.ts
-│   ├── hooks
-│   │   └── useScrollSpy.ts
-│   ├── lib
-│   │   ├── email.ts
-│   │   └── utils.ts
-│   └── types
-│       └── index.ts
-├── eslint.config.mjs
-└── tsconfig.json
+├── .vscode/
+│   └── settings.json             # Workspace settings (Tailwind v4 directive lint rules)
+├── AGENTS.md                     # Agent & workspace guidelines
+├── CLAUDE.md                     # AI assistant instructions
+├── DESIGN.md                     # Permanent Design System Reference
+├── README.md                     # Project overview and directory documentation
+├── app/
+│   ├── favicon.ico               # Browser favicon
+│   ├── globals.css               # Design tokens, Tailwind CSS imports, and global styles
+│   ├── layout.tsx                # Root layout with font imports, metadata, and Navbar
+│   └── page.tsx                  # Main page assembling all 6 portfolio sections
+├── next-env.d.ts                 # Next.js TypeScript declarations
+├── next.config.ts                # Next.js configuration (allowedDevOrigins)
+├── package.json                  # Dependencies, scripts, and metadata
+├── package-lock.json             # Locked dependency versions
+├── postcss.config.mjs            # PostCSS configuration for Tailwind CSS
+├── public/
+│   ├── og-image.png              # OpenGraph social share image
+│   ├── resume.pdf                # Downloadable CV document
+│   └── ...                       # Static SVGs and icons
+├── src/
+│   ├── components/
+│   │   ├── layout/
+│   │   │   ├── Footer.tsx        # Site footer with branding, nav links, and back-to-top action
+│   │   │   └── Navbar.tsx        # Fixed centered navigation pill with active section indicator
+│   │   ├── sections/
+│   │   │   ├── About.tsx         # About section (BSIT degree, focus, soft skills, certifications)
+│   │   │   ├── Contact.tsx       # Contact section (email copy, phone, direct email, location)
+│   │   │   ├── Education.tsx     # Education section (UEP degree, verified certificates)
+│   │   │   ├── Experience.tsx    # Work Experience section (MakerSpace InnovHub OPC internship)
+│   │   │   ├── Hero.tsx          # Hero section (Graduate intro, stack, stats, CTAs)
+│   │   │   └── Skills.tsx        # Technical Skills section (Categorized skill badges)
+│   │   └── ui/
+│   │       ├── AnimatedReveal.tsx # Scroll-triggered fade & slide animation wrapper
+│   │       ├── Badge.tsx         # Styled pill badges for skills, tags, and categories
+│   │       ├── Button.tsx        # Reusable primary/secondary button and link component
+│   │       └── SectionHeading.tsx# Reusable section header with eyebrow tag and description
+│   ├── data/
+│   │   ├── cv-data.ts            # Structured CV data (Single source of truth)
+│   │   └── site-config.ts        # Navigation links and site metadata
+│   ├── lib/
+│   │   └── utils.ts              # Classname merging helper (clsx + tailwind-merge)
+│   └── types/
+│       └── index.ts              # TypeScript interface definitions
+├── eslint.config.mjs             # ESLint linting configuration
+└── tsconfig.json                 # TypeScript compiler configuration & path aliases
 ```
 
-## Explanation of Each Folder/File
+---
 
-- `app/`
-  - Contains the Next.js App Router entry points.
-  - `layout.tsx` defines the root HTML layout and renders the site-wide `Navbar`.
-  - `page.tsx` renders the homepage content and currently includes the hero section.
-  - `globals.css` contains global styles and Tailwind CSS imports.
-  - `favicon.ico` is the site icon.
+## Explanation of Key Folders & Files
 
-- `src/`
-  - Contains the main source code for the application.
+### Data Layer (`src/data/`)
+- **`cv-data.ts`**: Contains all factual personal profile information, work experience at MakerSpace InnovHub OPC, BSIT education details, technical skills, soft skills, and certifications extracted directly from Denver's CV.
+- **`site-config.ts`**: Defines the site title, resume download URL, and active navigation links (`Home`, `About`, `Skills`, `Experience`, `Education`, `Contact`).
 
-- `src/app/api/contact/route.ts`
-  - Implements an API route for contact or form submission handling.
+### Design System (`DESIGN.md` & `app/globals.css`)
+- **`DESIGN.md`**: Permanent design reference documenting the dark theme color palette (`#0B0E14` base, `#12161F` surface, `#F2A65A` warm amber accent), typography scale (`Space Grotesk`, `Geist`, `Geist Mono`, `Caveat`), layout patterns, and component conventions.
+- **`app/globals.css`**: Configures root CSS variables, smooth scrolling padding, scrollbar aesthetics, and font variables.
 
-- `src/components/`
-  - `layout/` holds shared layout components such as `Navbar` and `Footer`.
-  - `sections/` contains page sections like `Hero`, `About`, `Skills`, `Experience`, `Projects`, `Education`, and `Contact`.
-  - `ui/` contains reusable UI building blocks such as buttons, badges, cards, and animated reveal wrappers.
+### Components (`src/components/`)
+- **`layout/Navbar.tsx`**: Centered floating navigation bar with backdrop blur, active section dot indicator (`IntersectionObserver`), and mobile hamburger menu.
+- **`sections/`**: Modular section components composed into `app/page.tsx`.
+- **`ui/`**: Reusable UI primitives (`Button`, `Badge`, `SectionHeading`, `AnimatedReveal`).
 
-- `src/data/`
-  - Stores content and configuration data used across the site.
-  - `site-config.ts` includes navigation links and site settings.
-  - `experience.ts`, `projects.ts`, and `skills.ts` define portfolio data.
+---
 
-- `src/hooks/`
-  - Contains custom React hooks, such as scroll spy behavior for active section tracking.
+## Getting Started
 
-- `src/lib/`
-  - Contains utility functions and helper logic.
-  - `email.ts` likely handles email or contact-related logic.
-  - `utils.ts` includes shared utility helpers.
+### Prerequisites
+- Node.js 18.x or higher
+- npm 9.x or higher
 
-- `src/types/`
-  - Defines TypeScript types used by the project.
+### Installation & Development
 
-- `public/`
-  - Stores static assets served directly by Next.js.
-  - Includes icons, images, and the downloadable `resume.pdf`.
+```bash
+# Install dependencies
+npm install
 
-- `package.json`
-  - Lists project dependencies, scripts, and metadata.
+# Run dev server
+npm run dev
 
-- `package-lock.json`
-  - Locks exact dependency versions for reproducible installs.
+# Build for production
+npm run build
 
-- `tsconfig.json`
-  - Configures TypeScript settings and path aliases.
+# Run production server
+npm run start
 
-- `next.config.ts`
-  - Configures Next.js build, runtime, and app settings.
+# Lint codebase
+npm run lint
+```
 
-- `postcss.config.mjs`
-  - Configures PostCSS, which is used by Tailwind CSS.
-
-- `eslint.config.mjs`
-  - Defines linting rules and configuration.
-
-- `next-env.d.ts`
-  - Provides type declarations for Next.js runtime features.
-
-- `AGENTS.md` and `CLAUDE.md`
-  - Workspace-specific documentation files related to AI agents or tooling.
-
-## How the Project Works
-
-1. The Next.js App Router loads `app/layout.tsx` for every page.
-2. `layout.tsx` renders the global structure and includes `Navbar` from `src/components/layout/Navbar.tsx`.
-3. `app/page.tsx` renders the homepage content inside the `main` element.
-4. The homepage currently uses `Hero` from `src/components/sections/Hero.tsx`.
-5. Reusable sections and UI components are stored under `src/components` and can be composed into pages.
-6. Global styles and Tailwind CSS are applied through `app/globals.css`.
-7. Static assets in `public/` are served directly, including the resume PDF.
-8. The API route at `src/app/api/contact/route.ts` handles backend contact logic when called from the frontend.
-
-## Important Notes
-
-- The project uses Next.js App Router and TypeScript.
-- Tailwind CSS is configured via `app/globals.css` and `postcss.config.mjs`.
-- Fonts are loaded using `next/font` in `app/layout.tsx`.
-- `@/*` path aliases are set in `tsconfig.json` and used throughout the codebase.
-- `node_modules/` is generated and not shown in this README tree.
-- Keep the `app/` and `src/` folder structure intact to preserve the App Router and component organization.
-- If you add new pages or routes, follow the App Router conventions inside `app/` or `src/app/`.
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the portfolio.
