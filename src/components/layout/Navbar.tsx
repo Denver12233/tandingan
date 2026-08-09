@@ -31,31 +31,49 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    const sections = sectionIds
-      .map((id: string) => document.getElementById(id))
-      .filter((section): section is HTMLElement => section !== null);
+    let observer: IntersectionObserver | null = null;
 
-    if (!sections.length) return;
+    const observeSections = () => {
+      const sections = sectionIds
+        .map((id: string) => document.getElementById(id))
+        .filter((section): section is HTMLElement => section !== null);
 
-    const observer = new IntersectionObserver(
-      (entries: IntersectionObserverEntry[]) => {
-        const visibleEntries = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+      if (!sections.length) return;
 
-        if (visibleEntries.length) {
-          setActiveSection(`#${visibleEntries[0].target.id}`);
+      observer?.disconnect();
+
+      observer = new IntersectionObserver(
+        (entries: IntersectionObserverEntry[]) => {
+          const visibleEntries = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+          if (visibleEntries.length) {
+            setActiveSection(`#${visibleEntries[0].target.id}`);
+          }
+        },
+        {
+          root: null,
+          rootMargin: "-35% 0px -55% 0px",
+          threshold: [0, 0.2, 0.4, 0.6, 0.8, 1],
         }
-      },
-      {
-        root: null,
-        rootMargin: "-35% 0px -55% 0px",
-        threshold: [0, 0.2, 0.4, 0.6, 0.8, 1],
-      }
-    );
+      );
 
-    sections.forEach((section: HTMLElement) => observer.observe(section));
-    return () => observer.disconnect();
+      sections.forEach((section: HTMLElement) => observer?.observe(section));
+    };
+
+    observeSections();
+
+    // PortfolioView swaps skeleton sections for real content after load,
+    // which creates brand-new section nodes. Re-observe whenever the DOM
+    // changes so the scroll-spy keeps tracking all six sections on deploy.
+    const mutationObserver = new MutationObserver(observeSections);
+    mutationObserver.observe(document.body, { childList: true, subtree: true });
+
+    return () => {
+      mutationObserver.disconnect();
+      observer?.disconnect();
+    };
   }, [sectionIds]);
 
   const handleNavClick = (event: MouseEvent<HTMLAnchorElement>, href: string) => {
