@@ -28,6 +28,8 @@ export type Certification = {
 export type SkillCategory = {
   name: string;
   skills: string[];
+  /** Whether this category should be rendered in the Skills marquee. Defaults to true. */
+  showInMarquee?: boolean;
 };
 
 export const cvData = {
@@ -113,7 +115,12 @@ export const cvData = {
       skills: ["MySQL", "MongoDB", "Firebase"],
     },
     {
+      name: "Version Control & Collaboration",
+      skills: ["Git", "GitHub"],
+    },
+    {
       name: "Core Technical Competencies",
+      showInMarquee: false,
       skills: [
         "Web and Mobile Development",
         "Data Migration",

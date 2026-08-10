@@ -52,9 +52,9 @@ export default function Hero() {
       {/* SVG clipPath definition — invisible, just registers the shape for reuse */}
       <svg width="0" height="0" className="absolute">
         <defs>
-          <clipPath id="splashClip" clipPathUnits="objectBoundingBox">
-            <path d="M 0.15,0.03 C 0.35,-0.02, 0.55,0.01, 0.72,0.06 C 0.85,0.1, 0.8,0.2, 0.92,0.24 C 1.03,0.28, 1.0,0.4, 0.95,0.5 C 0.9,0.6, 1.0,0.68, 0.94,0.78 C 0.88,0.88, 0.95,0.95, 0.82,0.98 C 0.68,1.02, 0.6,0.92, 0.46,0.97 C 0.32,1.02, 0.2,0.98, 0.1,0.9 C 0.02,0.83, 0.08,0.72, 0.03,0.6 C -0.02,0.48, 0.05,0.38, 0.02,0.26 C -0.01,0.16, 0.05,0.08, 0.15,0.03 Z" />
-          </clipPath>
+           <clipPath id="splashClip" clipPathUnits="objectBoundingBox">
+  <path d="M 0.1,0 L 0.9,0 C 0.96,0, 1,0.05, 1,0.12 L 1,0.4 C 1,0.46, 0.97,0.5, 1,0.56 L 1,0.88 C 1,0.95, 0.95,1, 0.88,1 L 0.5,1 C 0.44,1, 0.4,0.97, 0.35,1 L 0.12,1 C 0.05,1, 0,0.95, 0,0.88 L 0,0.55 C 0,0.5, 0.03,0.47, 0,0.42 L 0,0.12 C 0,0.05, 0.05,0, 0.1,0 Z" />
+</clipPath>
         </defs>
       </svg>
 
@@ -158,7 +158,7 @@ export default function Hero() {
 
         {/* Right Column — Profile Photo with jagged splash-shaped clip-path */}
         <AnimatedReveal delay={0.15} className="order-1 md:order-2">
-          <div className="relative mx-auto w-full max-w-[320px] sm:max-w-[400px]">
+         <div className="relative mx-auto w-full max-w-[250px] sm:max-w-[320px] mt-12 sm:mt-17">
             {/* Ambient background glow behind the photo */}
             <div
               aria-hidden="true"

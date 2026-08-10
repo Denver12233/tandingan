@@ -24,6 +24,7 @@ const SKILL_GROUPS: Record<GroupKey, string[]> = (() => {
     Frameworks: [],
   };
   for (const category of cvData.technicalSkills) {
+    if (category.showInMarquee === false) continue;
     groups[groupFor(category.name)].push(...category.skills);
   }
   return groups;
@@ -37,7 +38,7 @@ const LANGUAGES_MASK =
 function SkillPill({ skill }: { skill: string }) {
   const Icon = techIcons[skill];
   return (
-    <div className="mr-4 sm:mr-5 shrink-0 min-w-[180px] max-w-[260px] rounded-2xl border border-[var(--surface-border)] bg-[var(--card-bg)] px-5 py-4 flex items-center gap-3">
+    <div className="mr-4 sm:mr-5 shrink-0 min-w-[180px] max-w-[260px] rounded-2xl border border-[var(--card-border)] bg-[var(--card-bg)] px-5 py-4 flex items-center gap-3 shadow-[var(--card-elevation-shadow)]">
       {Icon ? (
         <Icon size={24} className="shrink-0 text-[var(--accent)]" />
       ) : (
@@ -53,11 +54,11 @@ function SkillPill({ skill }: { skill: string }) {
 function LanguageBadge({ skill }: { skill: string }) {
   const Icon = techIcons[skill];
   return (
-    <div className="mr-4 sm:mr-5 shrink-0 h-16 w-16 rounded-full border border-[var(--surface-border)] bg-[var(--badge-accent-bg)] flex items-center justify-center">
+    <div className="mr-4 sm:mr-5 shrink-0 h-16 w-16 rounded-full border border-[var(--badge-accent-solid-border)] bg-[var(--badge-accent-solid-bg)] flex items-center justify-center">
       {Icon ? (
-        <Icon size={28} className="shrink-0 text-[var(--accent)]" />
+        <Icon size={28} className="shrink-0 text-[var(--badge-accent-solid-text)]" />
       ) : (
-        <span className="h-2 w-2 shrink-0 rounded-full bg-[var(--accent)]" />
+        <span className="h-2 w-2 shrink-0 rounded-full bg-[var(--badge-accent-solid-text)]" />
       )}
     </div>
   );

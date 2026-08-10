@@ -22,7 +22,7 @@ export default function SkillsSkeleton() {
           {Array.from({ length: 5 }).map((_, i) => (
             <div
               key={i}
-              className="shrink-0 min-w-[180px] mr-4 sm:mr-5 rounded-2xl border border-[var(--surface-border)] bg-[var(--card-bg)] px-5 py-4 flex items-center gap-3"
+              className="shrink-0 min-w-[180px] mr-4 sm:mr-5 rounded-2xl border border-[var(--card-border)] bg-[var(--card-bg)] px-5 py-4 flex items-center gap-3 shadow-[var(--card-elevation-shadow)]"
             >
               <Skeleton className="h-7 w-7" rounded="rounded-lg" />
               <Skeleton className="h-4 w-20" rounded="rounded-md" />
@@ -33,7 +33,7 @@ export default function SkillsSkeleton() {
           {Array.from({ length: 6 }).map((_, i) => (
             <div
               key={i}
-              className="shrink-0 h-[72px] w-[72px] mr-4 sm:mr-5 rounded-full border border-[var(--surface-border)] bg-[var(--badge-accent-bg)] flex items-center justify-center"
+              className="shrink-0 h-[72px] w-[72px] mr-4 sm:mr-5 rounded-full border border-[var(--badge-accent-solid-border)] bg-[var(--badge-accent-solid-bg)] flex items-center justify-center"
             >
               <Skeleton className="h-8 w-8" rounded="rounded-full" />
             </div>
@@ -43,7 +43,7 @@ export default function SkillsSkeleton() {
           {Array.from({ length: 5 }).map((_, i) => (
             <div
               key={i}
-              className="shrink-0 min-w-[180px] mr-4 sm:mr-5 rounded-2xl border border-[var(--surface-border)] bg-[var(--card-bg)] px-5 py-4 flex items-center gap-3"
+              className="shrink-0 min-w-[180px] mr-4 sm:mr-5 rounded-2xl border border-[var(--card-border)] bg-[var(--card-bg)] px-5 py-4 flex items-center gap-3 shadow-[var(--card-elevation-shadow)]"
             >
               <Skeleton className="h-7 w-7" rounded="rounded-lg" />
               <Skeleton className="h-4 w-20" rounded="rounded-md" />

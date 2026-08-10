@@ -15,7 +15,7 @@ export const siteConfig = {
   email: cvData.personal.email,
   phone: cvData.personal.phone,
   location: cvData.personal.location,
-  resumeUrl: "/resume.pdf",
+  resumeUrl: "/Denver_M.Tandingan.pdf",
 };
 
 export const heroContent = {

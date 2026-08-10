@@ -1,11 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { FileText, Mail } from "lucide-react";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { Check, FileText, Mail } from "lucide-react";
+import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 import { useState, type ComponentType } from "react";
 import { cvData } from "@/src/data/cv-data";
 import { siteConfig } from "@/src/data/site-config";
+import { copyToClipboard } from "@/src/lib/clipboard";
 import AnimatedReveal from "../ui/AnimatedReveal";
 
 type SocialLink = {
@@ -18,11 +19,21 @@ type SocialLink = {
 const socials: SocialLink[] = [
   { label: "GitHub", href: "https://github.com/Denver12233", external: true, icon: FaGithub },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/tandingan-denver-m-374910392/", external: true, icon: FaLinkedin },
-  { label: "Email", href: "mailto:tandingandenverm@gmail.com", icon: Mail },
+  { label: "Facebook", href: "https://facebook.com/denver.tandingan.2024", external: true, icon: FaFacebook },
 ];
 
 export default function About() {
   const [imageFailed, setImageFailed] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = async () => {
+    const succeeded = await copyToClipboard(cvData.personal.email);
+    if (succeeded) {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    }
+  };
+
   const initials = siteConfig.name
     .split(" ")
     .map((part) => part[0])
@@ -38,9 +49,9 @@ export default function About() {
       */}
       <svg width="0" height="0" className="absolute">
         <defs>
-          <clipPath id="aboutBlobClip" clipPathUnits="objectBoundingBox">
-      <path d="M 0.15,0.02 C 0.4,-0.02, 0.65,0.0, 0.85,0.08 C 1.0,0.14, 1.0,0.32, 0.95,0.48 C 0.9,0.62, 0.98,0.75, 0.9,0.88 C 0.82,1.0, 0.6,1.02, 0.42,0.98 C 0.25,0.94, 0.1,1.0, 0.02,0.85 C -0.05,0.7, 0.05,0.55, 0.02,0.4 C -0.02,0.25, 0.0,0.1, 0.15,0.02 Z" />
-    </clipPath>
+          <clipPath id="aboutSplashClip" clipPathUnits="objectBoundingBox">
+            <path d="M 0.1,0 L 0.9,0 C 0.96,0, 1,0.05, 1,0.12 L 1,0.4 C 1,0.46, 0.97,0.5, 1,0.56 L 1,0.88 C 1,0.95, 0.95,1, 0.88,1 L 0.5,1 C 0.44,1, 0.4,0.97, 0.35,1 L 0.12,1 C 0.05,1, 0,0.95, 0,0.88 L 0,0.55 C 0,0.5, 0.03,0.47, 0,0.42 L 0,0.12 C 0,0.05, 0.05,0, 0.1,0 Z" />
+          </clipPath>
         </defs>
       </svg>
 
@@ -107,6 +118,20 @@ export default function About() {
                 <Icon size={20} />
               </a>
             ))}
+
+            <button
+              type="button"
+              onClick={handleCopyEmail}
+              aria-label="Copy email to clipboard"
+              className="relative text-[var(--text-secondary)] transition-colors duration-200 hover:text-[var(--accent)]"
+            >
+              {copied ? <Check size={20} /> : <Mail size={20} />}
+              {copied ? (
+                <span className="absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md border border-[var(--surface-border)] bg-[var(--card-bg)] px-2 py-1 text-[10px] font-medium text-[var(--text-primary)]">
+                  Copied!
+                </span>
+              ) : null}
+            </button>
           </div>
         </AnimatedReveal>
       </div>

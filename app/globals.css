@@ -22,6 +22,11 @@
   --badge-accent-border: rgba(242, 166, 90, 0.3);
   --badge-accent-text: #f2a65a;
 
+  /* Skills marquee — language circle badge (solid fill variant) */
+  --badge-accent-solid-bg: rgba(242, 166, 90, 0.12);
+  --badge-accent-solid-border: rgba(245, 243, 238, 0.1);
+  --badge-accent-solid-text: #f2a65a;
+
   --badge-surface-bg: rgba(245, 243, 238, 0.06);
   --badge-surface-border: rgba(245, 243, 238, 0.12);
   --badge-surface-text: #f5f3ee;
@@ -33,11 +38,14 @@
 
   --card-bg: rgba(18, 22, 31, 0.6);
   --card-subtle-bg: rgba(18, 22, 31, 0.4);
-  --nav-bg-scrolled: rgba(18, 22, 31, 0.97);
-  --nav-bg-unscrolled: rgba(18, 22, 31, 0.92);
+  /* Skills marquee — tool pill surface */
+  --card-border: rgba(245, 243, 238, 0.1);
+  --card-elevation-shadow: none;
+  --nav-bg-scrolled: rgba(18, 22, 31, 0.75);
+  --nav-bg-unscrolled: rgba(18, 22, 31, 0.65);
   --nav-border-scrolled: rgba(245, 243, 238, 0.15);
   --nav-border-unscrolled: rgba(245, 243, 238, 0.1);
-  --nav-menu-bg: rgba(18, 22, 31, 0.98);
+  --nav-menu-bg: rgba(18, 22, 31, 0.85);
 
   --grid-line: rgba(245, 243, 238, 0.03);
   --grid-glow: rgba(242, 166, 90, 0.06);
@@ -71,6 +79,11 @@
   --badge-accent-border: #f0d3a8;
   --badge-accent-text: #8a5a18;
 
+  /* Skills marquee — language circle badge (solid fill variant) */
+  --badge-accent-solid-bg: #c97a2e;
+  --badge-accent-solid-border: rgba(255, 255, 255, 0.28);
+  --badge-accent-solid-text: #ffffff;
+
   --badge-surface-bg: rgba(26, 26, 24, 0.05);
   --badge-surface-border: rgba(26, 26, 24, 0.14);
   --badge-surface-text: #1a1a18;
@@ -82,11 +95,14 @@
 
   --card-bg: #ffffff;
   --card-subtle-bg: rgba(255, 255, 255, 0.85);
-  --nav-bg-scrolled: rgba(255, 255, 255, 0.97);
-  --nav-bg-unscrolled: rgba(255, 255, 255, 0.93);
+  /* Skills marquee — tool pill surface */
+  --card-border: rgba(26, 26, 24, 0.16);
+  --card-elevation-shadow: 0 1px 2px rgba(26, 26, 24, 0.04), 0 8px 24px rgba(26, 26, 24, 0.06);
+  --nav-bg-scrolled: rgba(255, 255, 255, 0.75);
+  --nav-bg-unscrolled: rgba(255, 255, 255, 0.65);
   --nav-border-scrolled: rgba(26, 26, 24, 0.16);
   --nav-border-unscrolled: rgba(26, 26, 24, 0.12);
-  --nav-menu-bg: rgba(255, 255, 255, 0.98);
+  --nav-menu-bg: rgba(255, 255, 255, 0.85);
 
   --grid-line: rgba(26, 26, 24, 0.04);
   --grid-glow: rgba(201, 122, 46, 0.1);
