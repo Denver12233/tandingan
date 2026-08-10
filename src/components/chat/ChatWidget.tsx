@@ -48,6 +48,8 @@ export default function ChatWidget() {
   const [isLoading, setIsLoading] = useState(false);
   const [badgeVisible, setBadgeVisible] = useState(false);
   const [tooltipDismissed, setTooltipDismissed] = useState(false);
+  const [keyboardOffset, setKeyboardOffset] = useState(0);
+  const [viewportHeight, setViewportHeight] = useState<number | null>(null);
 
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -70,16 +72,54 @@ export default function ChatWidget() {
     return () => clearTimeout(timer);
   }, [open]);
 
+  useEffect(() => {
+    const visualViewport = window.visualViewport;
+    if (!visualViewport) return;
+
+    const handleKeyboardLayout = () => {
+      const visibleBottom = visualViewport.offsetTop + visualViewport.height;
+      let offset = 0;
+
+      const input = inputRef.current;
+      if (input) {
+        const rect = input.getBoundingClientRect();
+        const overlap = rect.bottom - visibleBottom;
+        offset = overlap > 0 ? overlap + 12 : 0;
+      } else if (window.innerHeight - visibleBottom > 100) {
+        offset = window.innerHeight - visibleBottom;
+      }
+
+      setKeyboardOffset(offset);
+      setViewportHeight(visualViewport.height);
+    };
+
+    visualViewport.addEventListener("resize", handleKeyboardLayout);
+    visualViewport.addEventListener("scroll", handleKeyboardLayout);
+
+    return () => {
+      visualViewport.removeEventListener("resize", handleKeyboardLayout);
+      visualViewport.removeEventListener("scroll", handleKeyboardLayout);
+    };
+  }, []);
+
   const toggleChat = () => {
     const willOpen = !open;
     setOpen(willOpen);
     if (willOpen) {
       setBadgeVisible(false);
+    } else {
+      setKeyboardOffset(0);
     }
   };
 
   const dismissTooltip = () => {
     setTooltipDismissed(true);
+  };
+
+  const handleInputFocus = () => {
+    window.setTimeout(() => {
+      inputRef.current?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    }, 150);
   };
 
   const sendMessage = async (rawText: string) => {
@@ -158,7 +198,12 @@ export default function ChatWidget() {
   const hasUserMessage = messages.some((m) => m.role === "user");
 
   return (
-    <div className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-[90] flex flex-col items-end">
+    <div
+      className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-[90] flex flex-col items-end"
+      style={{
+        bottom: keyboardOffset > 0 ? `calc(${keyboardOffset}px + 1.25rem)` : undefined,
+      }}
+    >
       <AnimatePresence>
         {open ? (
           <motion.div
@@ -173,6 +218,9 @@ export default function ChatWidget() {
             style={{
               backdropFilter: "blur(20px) saturate(180%)",
               WebkitBackdropFilter: "blur(20px) saturate(180%)",
+              ...(keyboardOffset > 0 && viewportHeight
+                ? { maxHeight: `calc(${viewportHeight}px - 5.5rem)` }
+                : {}),
             }}
           >
             {/* Header */}
@@ -204,7 +252,12 @@ export default function ChatWidget() {
             {/* Messages */}
             <div
               ref={scrollRef}
-              className="flex max-h-[min(52vh,420px)] min-h-[200px] flex-col gap-3 overflow-y-auto px-4 py-4"
+              className={cn(
+                "flex flex-col gap-3 overflow-y-auto px-4 py-4",
+                keyboardOffset > 0
+                  ? "min-h-0 flex-1"
+                  : "max-h-[min(52dvh,420px)] min-h-[200px]"
+              )}
             >
               {messages.map((msg) => (
                 <div
@@ -281,6 +334,7 @@ export default function ChatWidget() {
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
+                onFocus={handleInputFocus}
                 onKeyDown={handleKeyDown}
                 maxLength={MAX_INPUT_LENGTH}
                 placeholder={`Ask about ${cvData.personal.name.split(" ")[0]}...`}
