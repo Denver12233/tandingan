@@ -46,6 +46,8 @@ export default function ChatWidget() {
   ]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [badgeVisible, setBadgeVisible] = useState(false);
+  const [tooltipDismissed, setTooltipDismissed] = useState(false);
 
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -60,6 +62,25 @@ export default function ChatWidget() {
     const el = scrollRef.current;
     if (el) el.scrollTop = el.scrollHeight;
   }, [messages, isLoading]);
+
+  useEffect(() => {
+    if (open) return;
+
+    const timer = setTimeout(() => setBadgeVisible(true), 4000);
+    return () => clearTimeout(timer);
+  }, [open]);
+
+  const toggleChat = () => {
+    const willOpen = !open;
+    setOpen(willOpen);
+    if (willOpen) {
+      setBadgeVisible(false);
+    }
+  };
+
+  const dismissTooltip = () => {
+    setTooltipDismissed(true);
+  };
 
   const sendMessage = async (rawText: string) => {
     const text = rawText.trim();
@@ -279,17 +300,68 @@ export default function ChatWidget() {
         ) : null}
       </AnimatePresence>
 
+      {/* Greeting tooltip (before chat is opened) */}
+      <AnimatePresence>
+        {badgeVisible && !open && !tooltipDismissed ? (
+          <motion.div
+            key="chat-tooltip"
+            initial={{ opacity: 0, y: 6, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 6, scale: 0.96 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="relative mb-2 flex max-w-[230px] items-start gap-2 rounded-2xl rounded-br-md border border-[var(--surface-border)] bg-[var(--nav-menu-bg)] px-3.5 py-2.5 text-[12px] leading-snug text-[var(--text-primary)] shadow-[0_8px_24px_rgba(0,0,0,0.18)]"
+            style={{
+              backdropFilter: "blur(20px) saturate(180%)",
+              WebkitBackdropFilter: "blur(20px) saturate(180%)",
+            }}
+          >
+            <p>👋 Got questions about Denver? Ask me!</p>
+            <button
+              type="button"
+              onClick={dismissTooltip}
+              aria-label="Dismiss greeting"
+              className="-mr-1 -mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[var(--text-muted)] transition duration-200 hover:bg-[var(--btn-secondary-bg)] hover:text-[var(--text-primary)]"
+            >
+              <X size={12} />
+            </button>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
+
       {/* Floating action button */}
       <motion.button
         type="button"
-        onClick={() => setOpen((prev) => !prev)}
-        aria-label={open ? "Close chat" : "Open chat"}
+        onClick={toggleChat}
+        aria-label={
+          badgeVisible
+            ? "1 new message — open chat"
+            : open
+              ? "Close chat"
+              : "Open chat"
+        }
         aria-expanded={open}
         whileHover={{ scale: 1.06 }}
         whileTap={{ scale: 0.94 }}
-        className="flex h-14 w-14 items-center justify-center rounded-full bg-[var(--accent)] text-[var(--accent-text-on)] shadow-[0_8px_28px_var(--accent-glow)] transition-colors duration-200 hover:bg-[var(--accent-hover)]"
+        className="relative flex h-14 w-14 items-center justify-center rounded-full bg-[var(--accent)] text-[var(--accent-text-on)] shadow-[0_8px_28px_var(--accent-glow)] transition-colors duration-200 hover:bg-[var(--accent-hover)]"
       >
         {open ? <X size={22} /> : <MessageCircle size={22} />}
+
+        {/* Notification badge */}
+        <AnimatePresence>
+          {badgeVisible && !open ? (
+            <motion.span
+              key="chat-badge"
+              initial={{ opacity: 0, scale: 0.4 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.4 }}
+              transition={{ type: "spring", stiffness: 500, damping: 18 }}
+              className="absolute -right-0.5 -top-0.5 flex h-5 w-5 items-center justify-center rounded-full border-2 border-[var(--accent)] bg-[var(--accent-text-on)] text-[10px] font-bold text-[var(--accent)]"
+            >
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--accent)] opacity-40" />
+              <span className="relative z-10">1</span>
+            </motion.span>
+          ) : null}
+        </AnimatePresence>
       </motion.button>
     </div>
   );

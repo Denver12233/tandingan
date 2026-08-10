@@ -5,6 +5,7 @@ import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 import { useState, type ComponentType } from "react";
 import { cvData } from "@/src/data/cv-data";
 import { copyToClipboard } from "@/src/lib/clipboard";
+import Logo from "@/src/components/ui/Logo";
 
 type SocialLink = {
   label: string;
@@ -42,8 +43,9 @@ export default function Footer() {
           <div className="text-center md:text-left">
             <a
               href="#home"
-              className="font-[var(--font-space-grotesk)] text-base font-bold text-[var(--text-primary)] tracking-tight transition-colors duration-200 hover:text-[var(--accent)]"
+              className="inline-flex items-center gap-2 font-[var(--font-space-grotesk)] text-base font-bold text-[var(--text-primary)] tracking-tight transition-colors duration-200 hover:text-[var(--accent)]"
             >
+              <Logo size="sm" />
               {cvData.personal.name}
               <span className="text-[var(--accent)]">.dev</span>
             </a>

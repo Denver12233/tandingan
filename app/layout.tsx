@@ -44,6 +44,30 @@ export const metadata: Metadata = {
     "MakerSpace InnovHub",
   ],
   authors: [{ name: "Denver Tandingan" }],
+  openGraph: {
+    title: "Denver Tandingan — BSIT Fresh Graduate | Web & Software Developer",
+    description:
+      "Personal portfolio of Denver Tandingan, a BSIT fresh graduate from University of Eastern Pangasinan with 500-hour OJT internship experience in software & web application development.",
+    url: "https://denverfolio.vercel.app",
+    siteName: "Denver Tandingan",
+    type: "website",
+    locale: "en_US",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Denver Tandingan — code bracket logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Denver Tandingan — BSIT Fresh Graduate | Web & Software Developer",
+    description:
+      "Personal portfolio of Denver Tandingan, a BSIT fresh graduate from University of Eastern Pangasinan with 500-hour OJT internship experience in software & web application development.",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

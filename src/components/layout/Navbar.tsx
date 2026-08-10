@@ -6,6 +6,7 @@ import { useEffect, useMemo, useState, type MouseEvent } from "react";
 import { cn } from "@/src/lib/utils";
 import { navLinks, siteConfig } from "@/src/data/site-config";
 import { useTheme } from "@/src/components/theme/ThemeProvider";
+import Logo from "@/src/components/ui/Logo";
 
 type NavLink = { label: string; href: string };
 
@@ -116,8 +117,9 @@ export default function Navbar() {
         <a
           href="#home"
           onClick={(event) => handleNavClick(event, "#home")}
-          className="font-[var(--font-space-grotesk)] text-sm font-bold text-[var(--text-primary)] tracking-tight transition-colors duration-200 hover:text-[var(--accent)]"
+          className="flex items-center gap-2 font-[var(--font-space-grotesk)] text-sm font-bold text-[var(--text-primary)] tracking-tight transition-colors duration-200 hover:text-[var(--accent)]"
         >
+          <Logo size="sm" />
           Denver<span className="text-[var(--accent)]">.dev</span>
         </a>
 
