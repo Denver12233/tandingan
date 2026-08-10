@@ -29,13 +29,13 @@ The portfolio consists of 6 primary sections:
 │   └── settings.json             # Workspace settings (Tailwind v4 directive lint rules)
 ├── AGENTS.md                     # Agent & workspace guidelines
 ├── CLAUDE.md                     # AI assistant instructions
-├── DESIGN.md                     # Permanent Design System Reference
-├── README.md                     # Project overview and directory documentation
+├── DESIGN.md                     # Permanent design reference
+├── README.md                     # Project overview and documentation
 ├── app/
 │   ├── favicon.ico               # Browser favicon
-│   ├── globals.css               # Design tokens, Tailwind CSS imports, and global styles
-│   ├── layout.tsx                # Root layout with font imports, metadata, and Navbar
-│   └── page.tsx                  # Main page assembling all 6 portfolio sections
+│   ├── globals.css               # Global styles and Tailwind imports
+│   ├── layout.tsx                # Root layout with global HTML shell and metadata
+│   └── page.tsx                  # App entry page rendering the portfolio view
 ├── next-env.d.ts                 # Next.js TypeScript declarations
 ├── next.config.ts                # Next.js configuration (allowedDevOrigins)
 ├── package.json                  # Dependencies, scripts, and metadata
@@ -44,31 +44,53 @@ The portfolio consists of 6 primary sections:
 ├── public/
 │   ├── og-image.png              # OpenGraph social share image
 │   ├── resume.pdf                # Downloadable CV document
-│   └── ...                       # Static SVGs and icons
+│   └── ...                       # Static assets, SVGs, and icons
 ├── src/
+│   ├── app/
+│   │   └── api/
+│   │       └── contact/
+│   │           └── route.ts      # Contact API route for email form actions
 │   ├── components/
+│   │   ├── chat/
+│   │   │   ├── ChatWidget.tsx     # Inline chat/contact widget
+│   │   │   └── MarkdownContent.tsx# Markdown renderer for chat content
 │   │   ├── layout/
-│   │   │   ├── Footer.tsx        # Site footer with branding, nav links, and back-to-top action
-│   │   │   └── Navbar.tsx        # Fixed centered navigation pill with active section indicator
+│   │   │   ├── Footer.tsx        # Site footer with branding and back-to-top action
+│   │   │   └── Navbar.tsx        # Floating navigation pill with active section indicator
 │   │   ├── sections/
-│   │   │   ├── About.tsx         # About section (BSIT degree, focus, soft skills, certifications)
-│   │   │   ├── Contact.tsx       # Contact section (email copy, phone, direct email, location)
-│   │   │   ├── Education.tsx     # Education section (UEP degree, verified certificates)
-│   │   │   ├── Experience.tsx    # Work Experience section (MakerSpace InnovHub OPC internship)
-│   │   │   ├── Hero.tsx          # Hero section (Graduate intro, stack, stats, CTAs)
-│   │   │   └── Skills.tsx        # Technical Skills section (Categorized skill badges)
-│   │   └── ui/
-│   │       ├── AnimatedReveal.tsx # Scroll-triggered fade & slide animation wrapper
-│   │       ├── Badge.tsx         # Styled pill badges for skills, tags, and categories
-│   │       ├── Button.tsx        # Reusable primary/secondary button and link component
-│   │       └── SectionHeading.tsx# Reusable section header with eyebrow tag and description
+│   │   │   ├── About.tsx
+│   │   │   ├── Contact.tsx
+│   │   │   ├── Education.tsx
+│   │   │   ├── Experience.tsx
+│   │   │   ├── Hero.tsx
+│   │   │   └── Skills.tsx
+│   │   ├── theme/
+│   │   │   └── ThemeProvider.tsx # Theme provider and color mode handling
+│   │   ├── ui/
+│   │   │   ├── AnimatedReveal.tsx # Scroll-triggered animation wrapper
+│   │   │   ├── Badge.tsx         # Styled badge/pill component
+│   │   │   ├── Button.tsx        # Reusable button and link component
+│   │   │   ├── Logo.tsx          # Brand logo/icon component
+│   │   │   ├── SectionHeading.tsx# Reusable section heading component
+│   │   │   └── Skeleton.tsx      # Loading skeleton components
+│   │   └── PortfolioView.tsx     # Main portfolio page composition
 │   ├── data/
-│   │   ├── cv-data.ts            # Structured CV data (Single source of truth)
-│   │   └── site-config.ts        # Navigation links and site metadata
-│   ├── lib/
-│   │   └── utils.ts              # Classname merging helper (clsx + tailwind-merge)
-│   └── types/
-│       └── index.ts              # TypeScript interface definitions
+│   │   ├── about-me-data.ts      # Personal profile and summary data
+│   │   ├── cv-data.ts            # Structured CV data and resume content
+│   │   ├── experience.ts         # Experience timeline and project details
+│   │   ├── site-config.ts        # Site metadata and navigation links
+│   │   └── skills.ts             # Categorized technical skills data
+│   ├── hooks/
+│   │   ├── useMediaQuery.ts      # Media query hook
+│   │   ├── useScrollSpy.ts       # Active section scroll spy hook
+│   │   └── useTypewriter.ts      # Typewriter text animation hook
+   │   ├── lib/
+│   │   │   ├── clipboard.ts      # Clipboard copy helper
+   │   │   ├── email.ts          # Email helper utilities
+   │   │   ├── techIcons.tsx      # Technology icon mappings
+   │   │   └── utils.ts           # Utility helpers and class merge helpers
+│   │   └── types/
+│   │       └── index.ts          # TypeScript interface definitions
 ├── eslint.config.mjs             # ESLint linting configuration
 └── tsconfig.json                 # TypeScript compiler configuration & path aliases
 ```
