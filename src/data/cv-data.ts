@@ -39,6 +39,7 @@ export const cvData = {
     tagline: "Software & Web Application Developer",
     email: "tandingandenverm@gmail.com",
     phone: "(+63) 992 203 2589",
+    secondaryPhone: "(+63) 931 950 5961",
     location: "Urdaneta City, Pangasinan",
     summary:
       "I’m a fresh IT graduate passionate about building practical and reliable software solutions. I enjoy working with backend development, databases, and solving technical problems. I’m a fast learner who’s always eager to take on new challenges and grow as a developer. ",

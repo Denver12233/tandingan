@@ -3,6 +3,7 @@ import { Caveat, Geist, Geist_Mono, Space_Grotesk } from "next/font/google";
 import { ReactNode } from "react";
 import "./globals.css";
 import Navbar from "@/src/components/layout/Navbar";
+import ChatWidget from "@/src/components/chat/ChatWidget";
 import { ThemeProvider } from "@/src/components/theme/ThemeProvider";
 
 const geistSans = Geist({
@@ -56,6 +57,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <ThemeProvider>
           <Navbar />
           {children}
+          <ChatWidget />
         </ThemeProvider>
       </body>
     </html>

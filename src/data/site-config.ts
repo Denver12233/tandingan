@@ -15,6 +15,7 @@ export const siteConfig = {
   email: cvData.personal.email,
   phone: cvData.personal.phone,
   location: cvData.personal.location,
+  facebook: "https://facebook.com/denver.tandingan.2024",
   resumeUrl: "/Denver_M.Tandingan.pdf",
 };
 

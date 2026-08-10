@@ -13,6 +13,7 @@ const availabilityStatus = "Actively looking — open to opportunities now";
 export default function Contact() {
   const [copied, setCopied] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
+  const [copiedSecondaryPhone, setCopiedSecondaryPhone] = useState(false);
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(cvData.personal.email);
@@ -24,6 +25,12 @@ export default function Contact() {
     navigator.clipboard.writeText(cvData.personal.phone);
     setCopiedPhone(true);
     setTimeout(() => setCopiedPhone(false), 2500);
+  };
+
+  const handleCopySecondaryPhone = () => {
+    navigator.clipboard.writeText(cvData.personal.secondaryPhone);
+    setCopiedSecondaryPhone(true);
+    setTimeout(() => setCopiedSecondaryPhone(false), 2500);
   };
 
   return (
@@ -127,6 +134,38 @@ export default function Contact() {
                 >
                   {copiedPhone ? <Check size={13} /> : <Copy size={13} />}
                   <span>{copiedPhone ? "Copied!" : "Copy"}</span>
+                </button>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between gap-4 py-4">
+              <div className="flex items-center gap-3 min-w-0">
+                <Phone size={18} className="shrink-0 text-[var(--accent)]" />
+                <div className="min-w-0">
+                  <div className="text-xs text-[var(--text-muted)] font-semibold uppercase tracking-wider mb-1">
+                    Secondary Phone
+                  </div>
+                  <div className="text-sm sm:text-base font-semibold text-[var(--text-primary)]">
+                    {cvData.personal.secondaryPhone}
+                  </div>
+                </div>
+              </div>
+              <div className="flex shrink-0 items-center gap-3">
+                <a
+                  href={`tel:${cvData.personal.secondaryPhone.replace(/[^0-9+]/g, "")}`}
+                  className="inline-flex items-center gap-1 text-xs text-[var(--accent)] hover:underline font-medium"
+                >
+                  <span>Call</span>
+                  <ArrowUpRight size={13} />
+                </a>
+                <span className="h-4 w-px bg-[var(--surface-border)]" />
+                <button
+                  type="button"
+                  onClick={handleCopySecondaryPhone}
+                  className="inline-flex items-center gap-1.5 text-xs text-[var(--accent)] hover:underline font-medium"
+                >
+                  {copiedSecondaryPhone ? <Check size={13} /> : <Copy size={13} />}
+                  <span>{copiedSecondaryPhone ? "Copied!" : "Copy"}</span>
                 </button>
               </div>
             </div>
