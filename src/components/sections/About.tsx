@@ -29,7 +29,7 @@ export default function About() {
     .join("");
 
   return (
-    <section id="about" className="py-20 sm:py-28 px-6 sm:px-10 max-w-5xl mx-auto">
+    <section id="about" className="pt-8 sm:pt-10 pb-20 sm:pb-28 px-6 sm:px-10 max-w-5xl mx-auto">
       {/*
         NOTE: this id must be UNIQUE across the whole page.
         Hero.tsx already registers a clipPath with id="splashClip" —
@@ -38,9 +38,9 @@ export default function About() {
       */}
       <svg width="0" height="0" className="absolute">
         <defs>
-          <clipPath id="aboutSplashClip" clipPathUnits="objectBoundingBox">
-            <path d="M 0.2,0.0 C 0.45,-0.03, 0.6,0.05, 0.78,0.02 C 0.92,0.0, 1.02,0.12, 0.96,0.28 C 0.9,0.42, 1.0,0.5, 0.98,0.65 C 0.96,0.8, 0.85,0.85, 0.88,0.98 C 0.9,1.05, 0.6,1.02, 0.5,0.95 C 0.4,0.88, 0.25,1.0, 0.12,0.92 C 0.0,0.84, 0.08,0.7, 0.02,0.55 C -0.04,0.4, 0.06,0.3, 0.0,0.15 C -0.04,0.02, 0.1,0.02, 0.2,0.0 Z" />
-          </clipPath>
+          <clipPath id="aboutBlobClip" clipPathUnits="objectBoundingBox">
+      <path d="M 0.15,0.02 C 0.4,-0.02, 0.65,0.0, 0.85,0.08 C 1.0,0.14, 1.0,0.32, 0.95,0.48 C 0.9,0.62, 0.98,0.75, 0.9,0.88 C 0.82,1.0, 0.6,1.02, 0.42,0.98 C 0.25,0.94, 0.1,1.0, 0.02,0.85 C -0.05,0.7, 0.05,0.55, 0.02,0.4 C -0.02,0.25, 0.0,0.1, 0.15,0.02 Z" />
+    </clipPath>
         </defs>
       </svg>
 
@@ -65,7 +65,7 @@ export default function About() {
                 </div>
               ) : (
                 <Image
-                  src="/profile2.jpg"
+                  src="/profile1.png"
                   alt={`${siteConfig.name} — portrait`}
                   fill
                   sizes="280px"

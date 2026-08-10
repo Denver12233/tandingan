@@ -2,7 +2,7 @@ import Skeleton from "@/src/components/ui/Skeleton";
 
 export default function AboutSkeleton() {
   return (
-    <div className="py-20 sm:py-28 px-6 sm:px-10 max-w-5xl mx-auto">
+    <div className="pt-8 sm:pt-10 pb-20 sm:pb-28 px-6 sm:px-10 max-w-5xl mx-auto">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-14 items-center">
         {/* Left Column — Portrait Skeleton */}
         <div className="lg:col-span-5">

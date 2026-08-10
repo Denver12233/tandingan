@@ -8,7 +8,7 @@ import SectionHeading from "../ui/SectionHeading";
 
 export default function EducationSection() {
   return (
-    <section id="education" className="py-20 sm:py-28 px-6 sm:px-10 max-w-6xl mx-auto">
+    <section id="education" className="pt-8 sm:pt-10 pb-20 sm:pb-28 px-6 sm:px-10 max-w-6xl mx-auto">
       <SectionHeading
         eyebrow="Education"
         title="Academic foundation in Information Technology."

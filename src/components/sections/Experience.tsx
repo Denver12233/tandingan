@@ -76,7 +76,7 @@ export default function Experience() {
   const { data, error } = useGithubContributions();
 
   return (
-    <section id="experience" className="py-20 sm:py-28 px-6 sm:px-10 max-w-6xl mx-auto">
+    <section id="experience" className="pt-8 sm:pt-10 pb-20 sm:pb-28 px-6 sm:px-10 max-w-6xl mx-auto">
       <SectionHeading
         eyebrow="Work Experience"
         title="Hands-on internship experience in software & web development."

@@ -27,7 +27,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 sm:py-28 px-6 sm:px-10 max-w-6xl mx-auto">
+    <section id="contact" className="pt-8 sm:pt-10 pb-20 sm:pb-28 px-6 sm:px-10 max-w-6xl mx-auto">
       <SectionHeading
         eyebrow="Contact"
         title="Let's connect — open to IT & Software Development roles."

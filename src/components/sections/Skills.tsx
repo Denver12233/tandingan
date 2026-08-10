@@ -189,7 +189,7 @@ export default function Skills() {
   }, []);
 
   return (
-    <section id="skills" className="py-20 sm:py-28 px-6 sm:px-10 max-w-6xl mx-auto">
+    <section id="skills" className="pt-8 sm:pt-10 pb-20 sm:pb-28 px-6 sm:px-10 max-w-6xl mx-auto">
       <SectionHeading
         eyebrow="What I Work With"
         title="The stack behind everything I build."

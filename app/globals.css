@@ -116,7 +116,23 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 90px;
+}
+
+/* Navbar is fixed at top-4 (16px) with a pill height up to ~64px
+   (mobile, unscrolled), so its bottom edge never exceeds 80px from
+   the viewport top. This offset lands section tops just clear of it. */
+:root {
+  --nav-landing-offset: 80px;
+}
+
+section[id] {
+  scroll-margin-top: var(--nav-landing-offset);
+}
+
+/* Home is the first section — it should scroll to absolute top, not
+   leave a gap above the hero. */
+#home {
+  scroll-margin-top: 0;
 }
 
 body {

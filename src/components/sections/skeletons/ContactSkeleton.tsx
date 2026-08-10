@@ -3,7 +3,7 @@ import SectionHeadingSkeleton from "./SectionHeadingSkeleton";
 
 export default function ContactSkeleton() {
   return (
-    <div className="py-20 sm:py-28 px-6 sm:px-10 max-w-6xl mx-auto">
+    <div className="pt-8 sm:pt-10 pb-20 sm:pb-28 px-6 sm:px-10 max-w-6xl mx-auto">
       <SectionHeadingSkeleton align="center" />
 
       {/* Availability status */}
