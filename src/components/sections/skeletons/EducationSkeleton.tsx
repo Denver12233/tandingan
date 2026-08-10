@@ -6,61 +6,34 @@ export default function EducationSkeleton() {
     <div className="py-20 sm:py-28 px-6 sm:px-10 max-w-6xl mx-auto">
       <SectionHeadingSkeleton align="left" />
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        {/* Main Degree Card */}
-        <div className="lg:col-span-7">
-          <div className="h-full rounded-2xl border border-[var(--surface-border)] bg-[var(--card-bg)] p-6 sm:p-8 backdrop-blur-md flex flex-col justify-between">
-            <div>
-              <Skeleton className="h-6 w-36 mb-4" rounded="rounded-full" />
-              <Skeleton className="h-8 sm:h-9 w-4/5 mb-2" rounded="rounded-lg" />
-              <Skeleton className="h-6 w-3/5 mb-4" rounded="rounded-md" />
+      <div className="max-w-3xl pl-6 sm:pl-8">
+        {/* Degree Badge Pill */}
+        <Skeleton className="h-6 w-40 mb-4" rounded="rounded-full" />
 
-              <div className="flex flex-wrap items-center gap-4 mb-6">
-                <Skeleton className="h-4 w-40" rounded="rounded-md" />
-                <Skeleton className="h-4 w-36" rounded="rounded-md" />
-              </div>
+        {/* Degree Title */}
+        <Skeleton className="h-8 sm:h-10 w-4/5 mb-1.5" rounded="rounded-lg" />
 
-              <div className="border-t border-[var(--surface-border)] pt-4 space-y-2">
-                <Skeleton className="h-4 w-full" rounded="rounded-md" />
-                <Skeleton className="h-4 w-11/12" rounded="rounded-md" />
-              </div>
-            </div>
+        {/* Institution */}
+        <Skeleton className="h-7 w-3/5 mb-4" rounded="rounded-md" />
 
-            <div className="mt-6 flex flex-wrap gap-2 pt-4 border-t border-[var(--surface-border)]">
-              <Skeleton className="h-7 w-24" rounded="rounded-full" />
-              <Skeleton className="h-7 w-32" rounded="rounded-full" />
-              <Skeleton className="h-7 w-36" rounded="rounded-full" />
-            </div>
-          </div>
+        {/* Graduation Year + Location row */}
+        <div className="flex flex-wrap items-center gap-5 mb-6">
+          <Skeleton className="h-4 w-40" rounded="rounded-md" />
+          <Skeleton className="h-4 w-36" rounded="rounded-md" />
         </div>
 
-        {/* Certifications & Diplomas */}
-        <div className="lg:col-span-5">
-          <div className="h-full rounded-2xl border border-[var(--surface-border)] bg-[var(--card-bg)] p-6 sm:p-8 backdrop-blur-md flex flex-col justify-between">
-            <div>
-              <Skeleton className="h-6 w-48 mb-6" rounded="rounded-md" />
+        {/* Description */}
+        <div className="space-y-2.5">
+          <Skeleton className="h-4 sm:h-5 w-full" rounded="rounded-md" />
+          <Skeleton className="h-4 sm:h-5 w-11/12" rounded="rounded-md" />
+          <Skeleton className="h-4 sm:h-5 w-3/4" rounded="rounded-md" />
+        </div>
 
-              <div className="space-y-4">
-                {Array.from({ length: 3 }).map((_, i) => (
-                  <div
-                    key={i}
-                    className="rounded-xl border border-[var(--surface-border)] bg-[var(--badge-surface-bg)] p-4"
-                  >
-                    <div className="flex items-start justify-between gap-2 mb-1">
-                      <Skeleton className="h-4 w-3/4" rounded="rounded-md" />
-                      <Skeleton className="h-3 w-10" rounded="rounded-md" />
-                    </div>
-                    <Skeleton className="h-3 w-1/2 mb-3" rounded="rounded-md" />
-                    <Skeleton className="h-3 w-28" rounded="rounded-md" />
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="mt-6 pt-4 border-t border-[var(--surface-border)]">
-              <Skeleton className="h-3 w-56" rounded="rounded-md" />
-            </div>
-          </div>
+        {/* Tag Badges */}
+        <div className="mt-5 flex flex-wrap gap-2">
+          <Skeleton className="h-6 w-24" rounded="rounded-full" />
+          <Skeleton className="h-6 w-32" rounded="rounded-full" />
+          <Skeleton className="h-6 w-36" rounded="rounded-full" />
         </div>
       </div>
     </div>

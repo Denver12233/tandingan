@@ -8,8 +8,11 @@ import AnimatedReveal from "../ui/AnimatedReveal";
 import Button from "../ui/Button";
 import SectionHeading from "../ui/SectionHeading";
 
+const availabilityStatus = "Actively looking — open to opportunities now";
+
 export default function Contact() {
   const [copied, setCopied] = useState(false);
+  const [copiedPhone, setCopiedPhone] = useState(false);
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(cvData.personal.email);
@@ -17,14 +20,25 @@ export default function Contact() {
     setTimeout(() => setCopied(false), 2500);
   };
 
+  const handleCopyPhone = () => {
+    navigator.clipboard.writeText(cvData.personal.phone);
+    setCopiedPhone(true);
+    setTimeout(() => setCopiedPhone(false), 2500);
+  };
+
   return (
     <section id="contact" className="py-20 sm:py-28 px-6 sm:px-10 max-w-6xl mx-auto">
       <SectionHeading
-        eyebrow="05. Contact"
+        eyebrow="Contact"
         title="Let's connect — open to IT & Software Development roles."
         description="Whether you have an open position, an internship follow-up, or want to discuss full-stack & backend opportunities, feel free to reach out!"
         align="center"
       />
+
+      <div className="flex items-center justify-center gap-2 -mt-6 sm:-mt-10 mb-6 sm:mb-8 text-xs text-[var(--text-muted)]">
+        <span className="h-2 w-2 rounded-full bg-[var(--status-available)] shadow-[0_0_8px_var(--status-available)]" />
+        <span>{availabilityStatus}</span>
+      </div>
 
       <AnimatedReveal direction="up" delay={0.1}>
         <div className="mt-14 pt-10 sm:pt-12 border-t border-[var(--surface-border)] grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
@@ -97,27 +111,44 @@ export default function Contact() {
                   </div>
                 </div>
               </div>
-              <a
-                href={`tel:${cvData.personal.phone.replace(/[^0-9+]/g, "")}`}
-                className="shrink-0 inline-flex items-center gap-1 text-xs text-[var(--accent)] hover:underline font-medium"
-              >
-                <span>Call</span>
-                <ArrowUpRight size={13} />
-              </a>
+              <div className="flex shrink-0 items-center gap-3">
+                <a
+                  href={`tel:${cvData.personal.phone.replace(/[^0-9+]/g, "")}`}
+                  className="inline-flex items-center gap-1 text-xs text-[var(--accent)] hover:underline font-medium"
+                >
+                  <span>Call</span>
+                  <ArrowUpRight size={13} />
+                </a>
+                <span className="h-4 w-px bg-[var(--surface-border)]" />
+                <button
+                  type="button"
+                  onClick={handleCopyPhone}
+                  className="inline-flex items-center gap-1.5 text-xs text-[var(--accent)] hover:underline font-medium"
+                >
+                  {copiedPhone ? <Check size={13} /> : <Copy size={13} />}
+                  <span>{copiedPhone ? "Copied!" : "Copy"}</span>
+                </button>
+              </div>
             </div>
 
             <div className="flex items-center justify-between gap-4 py-4">
-              <div className="flex items-center gap-3 min-w-0">
+              <a
+                href="https://maps.app.goo.gl/M1U8kNHedvwQLpveA"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="View my location on Google Maps"
+                className="flex items-center gap-3 min-w-0 text-[var(--text-primary)] transition-colors duration-200 hover:text-[var(--accent)]"
+              >
                 <MapPin size={18} className="shrink-0 text-[var(--accent)]" />
                 <div className="min-w-0">
                   <div className="text-xs text-[var(--text-muted)] font-semibold uppercase tracking-wider mb-1">
                     Location
                   </div>
-                  <div className="text-sm sm:text-base font-semibold text-[var(--text-primary)]">
+                  <div className="text-sm sm:text-base font-semibold truncate">
                     {cvData.personal.location}
                   </div>
                 </div>
-              </div>
+              </a>
               <span className="shrink-0 text-sm font-medium text-[var(--text-secondary)]">
                 Philippines
               </span>

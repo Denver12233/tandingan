@@ -12,6 +12,7 @@
   --accent-glow: rgba(242, 166, 90, 0.15);
   --accent-border: rgba(242, 166, 90, 0.3);
   --accent-text-on: #0b0e14;
+  --status-available: #7cc58f;
 
   --text-primary: #f5f3ee;
   --text-secondary: rgba(245, 243, 238, 0.7);
@@ -60,6 +61,7 @@
   --accent-glow: rgba(201, 122, 46, 0.15);
   --accent-border: rgba(201, 122, 46, 0.4);
   --accent-text-on: #ffffff;
+  --status-available: #2e7d4f;
 
   --text-primary: #1a1a18;
   --text-secondary: #4a4a45;
